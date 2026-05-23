@@ -1,20 +1,40 @@
+using Enums;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BoltMinigame : MonoBehaviour
+public class BoltMinigame : Minigame
 {
     [SerializeField] private BombController bombController;
-    [SerializeField] private List<GameObject> boltList;
-    public bool completed = false;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    [SerializeField] private List<BoltController> boltList;
+    private BoltType[] bolts = new BoltType[3];
+    public void SetBolts(BoltType[] bolts)
     {
-        
+        this.bolts = bolts;
+        for (int i = 0; i < boltList.Count; i++)
+        {
+            boltList[i].SetBoltType(bolts[i]);
+        }
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+     public override void StartGame() { }
+     public override void OnSelect()
+     {
+         isFocused = true;
+     }
+     public override void OnDeselect()
+     {
+         isFocused = false;
+     }
+     public override void ForceDeselect()
+     {
+         OnDeselect();
+     }
+     public override void WinGame()
+     {
+         Debug.Log("Yay");
+         completed = true;
+     }
+     public override void LoseGame()
+     {
+         Debug.Log("Lost");
+     }
 }
