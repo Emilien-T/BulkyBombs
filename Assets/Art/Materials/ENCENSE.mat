@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Shader Graphs_Toon Shader
+  m_Name: ENCENSE
   m_Shader: {fileID: -6465566751694194690, guid: 60681fd740c1b4969bf61229dca43ef8, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -25,7 +25,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _Base_Texture:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: e38f5596a83b04f8ea44b5170a4899c0, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Normal_Map:
@@ -47,15 +47,15 @@ Material:
     m_Ints: []
     m_Floats:
     - _Max_Brightness: 1
-    - _Min_Brightness: 0
+    - _Min_Brightness: -0.06
     - _QueueControl: 0
     - _QueueOffset: 0
     - _Shadow_size: 0.49
     m_Colors:
-    - _Base_colour: {r: 0.16553934, g: 0.2264151, b: 0.21085304, a: 1}
+    - _Base_colour: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
---- !u!114 &548338504667936914
+--- !u!114 &9173670938788798454
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
