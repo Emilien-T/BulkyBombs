@@ -1,4 +1,6 @@
+using Enums;
 using System;
+using System.Collections;
 using UnityEngine;
 
 public class Brush : MonoBehaviour
@@ -12,13 +14,14 @@ public class Brush : MonoBehaviour
     public event Action<int> pixelsLeft;
     public float MoveSensitivity;
     public float brushSize;
+    public GameObject button;
 
     private bool isBuffing;
     private Vector2 moveDir;
 
     void Start()
     {
-        InputController.Instance.button0 += OnButtonDown;
+        InputController.Instance.button1 += OnButtonDown;
         InputController.Instance.directionalControls += DirectionalControls;
         // Initialize to white so multiply starts at 1
         RenderTexture prev = RenderTexture.active;
@@ -26,19 +29,20 @@ public class Brush : MonoBehaviour
         GL.Clear(false, true, Color.white);
         RenderTexture.active = prev;
         targetObject.GetComponent<Renderer>().material.SetTexture("_BuffMask", paintTexture);
+        targetObject.GetComponent<Renderer>().material.SetFloat("_AlphaMult", 1);
 
     }
     private void OnButtonDown(bool isDown)
     {
         isBuffing = isDown;
     }
-    private void DirectionalControls(Vector2 dir) 
+    private void DirectionalControls(Vector2 dir)
     {
         moveDir = dir;
     }
     void Update()
     {
-        if(!minigameManager.isFocused || minigameManager.completed) return;
+        if (minigameManager.bombController.currentMinigame != MinigameType.Button || minigameManager.completed) return;
         transform.localPosition += new Vector3(moveDir.x, 0, moveDir.y) * MoveSensitivity * Time.deltaTime;
         if (!isBuffing) return;
 
@@ -53,8 +57,9 @@ public class Brush : MonoBehaviour
             }
         }
 
-        if (Physics.Raycast(ray, Mathf.Infinity, buttonLayer)) 
+        if (Physics.Raycast(ray, Mathf.Infinity, buttonLayer))
         {
+            button.transform.localPosition += new Vector3(0,-0.15f,0);
             minigameManager.LoseGame();
         }
     }
@@ -89,7 +94,28 @@ public class Brush : MonoBehaviour
     private void OnDisable()
     {
 
-        InputController.Instance.button0 -= OnButtonDown;
+        InputController.Instance.button1 -= OnButtonDown;
         InputController.Instance.directionalControls -= DirectionalControls;
+    }
+
+    Coroutine cleanupRoutine;
+    public void AutoCleanup()
+    {
+        if (cleanupRoutine != null)
+            StopCoroutine(cleanupRoutine);
+
+        cleanupRoutine = StartCoroutine(AutoCleanupRoutine());
+    }
+    IEnumerator AutoCleanupRoutine()
+    {
+        float timer = 0;
+        while (timer < 0.5f)
+        {
+            timer += Time.deltaTime;
+            targetObject.GetComponent<Renderer>().material.SetFloat("_AlphaMult", Mathf.Lerp(1,0,timer/0.5f));
+            yield return null;
+        }
+
+        cleanupRoutine = null;
     }
 }

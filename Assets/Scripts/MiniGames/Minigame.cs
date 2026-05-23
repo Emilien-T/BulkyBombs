@@ -3,7 +3,6 @@ using UnityEngine;
 public class Minigame : MonoBehaviour
 {
     public bool completed;
-    public bool isFocused;
     public virtual void OnSelect() { }
     public virtual void OnDeselect() { }
     public virtual void ForceDeselect() { }

@@ -18,6 +18,7 @@ public class BoltMinigame : Minigame
             boltList[i].SetBoltType(bolts[i]);
         }
     }
+
     public override void StartGame()
     {
         boltingPush = 0;
@@ -25,7 +26,6 @@ public class BoltMinigame : Minigame
     }
     public override void OnSelect()
     {
-        isFocused = true;
         boltingPush = 0;
         boltIndex = 0;
         boltingState = false;
@@ -66,7 +66,6 @@ public class BoltMinigame : Minigame
 
     public override void OnDeselect()
     {
-        isFocused = false;
         InputController.Instance.directionalControls -= BoltControl;
     }
     public override void ForceDeselect()

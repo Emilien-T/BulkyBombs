@@ -13,7 +13,8 @@ public class BombController : MonoBehaviour
     [SerializeField] private BoltMinigame boltMinigame;
     [SerializeField] private ButtonMinigame buttonMinigame;
     [SerializeField] private NailsMinigame nailsMinigame;
-    private MinigameType currentMinigame = MinigameType.None;
+    public MinigameType currentMinigame = MinigameType.None;
+    private int currentMinigameIndex = 0;
 
     private Tween _moveTween;
     private bool activeBomb = false;
@@ -27,6 +28,7 @@ public class BombController : MonoBehaviour
             2 => ButtonType.Triangle,
             _ => ButtonType.Umbrella
         };
+        buttonMinigame.Setup(buttonType);
 
         for (int i = 0; i < bolts.Length; i++)
         {
@@ -43,18 +45,25 @@ public class BombController : MonoBehaviour
 
     public void NextMiniGame()
     {
+        Minigame chosenMinigame = null;
         switch (currentMinigame)
         {
             case MinigameType.None:
+                chosenMinigame = buttonMinigame;
                 currentMinigame = MinigameType.Button;
                 break;
             case MinigameType.Button:
+                buttonMinigame.OnDeselect();
+                chosenMinigame = boltMinigame;
                 currentMinigame = MinigameType.Bolt;
                 break;
             case MinigameType.Bolt:
+                boltMinigame.OnDeselect();
+                chosenMinigame = nailsMinigame;
                 currentMinigame = MinigameType.Nails;
                 break;
             case MinigameType.Nails:
+                nailsMinigame.OnDeselect();
                 currentMinigame = MinigameType.None;
                 break;
             case MinigameType.Zen:
@@ -62,7 +71,23 @@ public class BombController : MonoBehaviour
             default:
                 break;
         }
-        CameraController.Instance.TransitionToMinigame(currentMinigame);
+
+        if (currentMinigame == MinigameType.Button && buttonMinigame.completed)
+        {
+            NextMiniGame();
+        }
+        else if (currentMinigame == MinigameType.Bolt && boltMinigame.completed)
+        {
+            NextMiniGame();
+        }
+        else if (currentMinigame == MinigameType.Nails && nailsMinigame.completed) 
+        {
+            NextMiniGame();
+        }
+        else 
+        {
+            CameraController.Instance.TransitionToMinigame(currentMinigame, chosenMinigame);
+        }
     }
 
     private void StartConveyor()
@@ -78,7 +103,7 @@ public class BombController : MonoBehaviour
     public void TransitionOut()
     {
         currentMinigame = MinigameType.None;
-        CameraController.Instance.TransitionToMinigame(currentMinigame);
+        CameraController.Instance.TransitionToMinigame(currentMinigame, null);
         _moveTween?.Kill();
         _moveTween = transform.DOMove(transitionOut, 2f).SetEase(Ease.Linear).OnComplete(() =>
         {

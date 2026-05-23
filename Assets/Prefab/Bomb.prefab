@@ -665,24 +665,12 @@ PrefabInstance:
       value: ButtonMinigame
       objectReference: {fileID: 0}
     - target: {fileID: 8445459098365600972, guid: 618c9f455b75eb44e800bb2faa0498df, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8445459098365600972, guid: 618c9f455b75eb44e800bb2faa0498df, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8445459098365600972, guid: 618c9f455b75eb44e800bb2faa0498df, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8445459098365600972, guid: 618c9f455b75eb44e800bb2faa0498df, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.503
       objectReference: {fileID: 0}
     - target: {fileID: 8445459098365600972, guid: 618c9f455b75eb44e800bb2faa0498df, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.275
+      value: -0.01
       objectReference: {fileID: 0}
     - target: {fileID: 8445459098365600972, guid: 618c9f455b75eb44e800bb2faa0498df, type: 3}
       propertyPath: m_LocalPosition.z
