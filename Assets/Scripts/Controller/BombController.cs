@@ -37,6 +37,7 @@ public class BombController : MonoBehaviour
                 _ => BoltType.Three
             };
         }
+        boltMinigame.SetBolts(bolts);
         StartConveyor();
     }
 
