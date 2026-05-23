@@ -14,6 +14,7 @@ public class BombController : MonoBehaviour
     [SerializeField] private ButtonMinigame buttonMinigame;
     [SerializeField] private NailsMinigame nailsMinigame;
     private MinigameType currentMinigame = MinigameType.None;
+    private int currentMinigameIndex = 0;
 
     private Tween _moveTween;
     private bool activeBomb = false;
@@ -48,12 +49,15 @@ public class BombController : MonoBehaviour
                 currentMinigame = MinigameType.Button;
                 break;
             case MinigameType.Button:
+                buttonMinigame.OnDeselect();
                 currentMinigame = MinigameType.Bolt;
                 break;
             case MinigameType.Bolt:
+                boltMinigame.OnDeselect();
                 currentMinigame = MinigameType.Nails;
                 break;
             case MinigameType.Nails:
+                nailsMinigame.OnDeselect();
                 currentMinigame = MinigameType.None;
                 break;
             case MinigameType.Zen:
@@ -61,7 +65,23 @@ public class BombController : MonoBehaviour
             default:
                 break;
         }
-        CameraController.Instance.TransitionToMinigame(currentMinigame);
+
+        if (currentMinigame == MinigameType.Button && buttonMinigame.completed)
+        {
+            NextMiniGame();
+        }
+        else if (currentMinigame == MinigameType.Bolt && boltMinigame.completed)
+        {
+            NextMiniGame();
+        }
+        else if (currentMinigame == MinigameType.Nails && nailsMinigame.completed) 
+        {
+            NextMiniGame();
+        }
+        else 
+        {
+            CameraController.Instance.TransitionToMinigame(currentMinigame);
+        }
     }
 
     private void StartConveyor()

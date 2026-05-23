@@ -19,7 +19,7 @@ public class NailsMinigame : Minigame
     public bool timerPaused;
     private void Start()
     {
-        InputController.Instance.button0 += Hammer;
+        InputController.Instance.button1 += Hammer;
         foreach (var nail in nails) 
         {
             nail.nailingUI.minigameManager = this;
@@ -27,7 +27,7 @@ public class NailsMinigame : Minigame
     }
     private void OnDisable()
     {
-        InputController.Instance.button0 -= Hammer;
+        InputController.Instance.button1 -= Hammer;
     }
     private void Hammer(bool val) 
     {
@@ -110,6 +110,7 @@ public class NailsMinigame : Minigame
     {
         Debug.Log("won nail game");
         completed = true;
+        bombController.TransitionOut();
     }
     private IEnumerator FailNailRoutine() 
     {

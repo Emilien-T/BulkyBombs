@@ -18,7 +18,7 @@ public class Brush : MonoBehaviour
 
     void Start()
     {
-        InputController.Instance.button0 += OnButtonDown;
+        InputController.Instance.button1 += OnButtonDown;
         InputController.Instance.directionalControls += DirectionalControls;
         // Initialize to white so multiply starts at 1
         RenderTexture prev = RenderTexture.active;
@@ -89,7 +89,7 @@ public class Brush : MonoBehaviour
     private void OnDisable()
     {
 
-        InputController.Instance.button0 -= OnButtonDown;
+        InputController.Instance.button1 -= OnButtonDown;
         InputController.Instance.directionalControls -= DirectionalControls;
     }
 }

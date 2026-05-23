@@ -37,11 +37,12 @@ public class CameraController : Controller<CameraController>
         transform.DOShakePosition(0.2f, strength: 0.1f, vibrato: 40, randomness: 0).SetEase(Ease.OutQuad);
     }
 
-    private void Transition(Transform target)
+    private void Transition(Transform target, Minigame targetMinigame)
     {
         Sequence seq = DOTween.Sequence();
         seq.Append(transform.DOMove(target.position, transitionTime).SetEase(Ease.InOutQuad));
         seq.Join(transform.DORotate(target.rotation.eulerAngles, transitionTime).SetEase(Ease.InOutQuad));
+        if(targetMinigame != null) seq.onComplete += () => targetMinigame.OnSelect();
     }
 
     public void GoToZen()
