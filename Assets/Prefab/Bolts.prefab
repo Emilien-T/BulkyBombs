@@ -271,9 +271,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d0f7aad9187b30408de79c919390a66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  bombController: {fileID: 0}
-  boltList: []
   completed: 0
+  isFocused: 0
+  bombController: {fileID: 0}
+  boltList:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1 &6811609515942830937
 GameObject:
   m_ObjectHideFlags: 0

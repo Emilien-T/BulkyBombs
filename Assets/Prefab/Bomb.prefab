@@ -39,7 +39,7 @@ Transform:
   - {fileID: 2124873232281726101}
   - {fileID: 8941333307995494819}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: -90}
 --- !u!33 &6645197803733084843
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -263,9 +263,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4446c2241e274eb42b89740187020b54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  boltColor1: {r: 0, g: 0, b: 0, a: 0}
-  boltColor2: {r: 0, g: 0, b: 0, a: 0}
-  boltColor3: {r: 0, g: 0, b: 0, a: 0}
+  boltColor1: {r: 0.82641506, g: 0.4225631, b: 0.4225631, a: 1}
+  boltColor2: {r: 0.36168742, g: 0.6679245, b: 0.36168742, a: 1}
+  boltColor3: {r: 0.25779274, g: 0.25779274, b: 0.5622641, a: 1}
 --- !u!1 &4539676348244210180
 GameObject:
   m_ObjectHideFlags: 0
@@ -391,9 +391,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4446c2241e274eb42b89740187020b54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  boltColor1: {r: 0, g: 0, b: 0, a: 0}
-  boltColor2: {r: 0, g: 0, b: 0, a: 0}
-  boltColor3: {r: 0, g: 0, b: 0, a: 0}
+  boltColor1: {r: 0.82641506, g: 0.4225631, b: 0.4225631, a: 1}
+  boltColor2: {r: 0.36168742, g: 0.6679245, b: 0.36168742, a: 1}
+  boltColor3: {r: 0.25779274, g: 0.25779274, b: 0.5622641, a: 1}
 --- !u!1001 &974306421055422105
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -506,6 +506,18 @@ PrefabInstance:
       propertyPath: bombController
       value: 
       objectReference: {fileID: 8488100432659126610}
+    - target: {fileID: 5115708574199972386, guid: e80408eefa9af7a44ab32893797fb3fa, type: 3}
+      propertyPath: 'boltList.Array.data[0]'
+      value: 
+      objectReference: {fileID: 6654837264025577897}
+    - target: {fileID: 5115708574199972386, guid: e80408eefa9af7a44ab32893797fb3fa, type: 3}
+      propertyPath: 'boltList.Array.data[1]'
+      value: 
+      objectReference: {fileID: 7130247374178625654}
+    - target: {fileID: 5115708574199972386, guid: e80408eefa9af7a44ab32893797fb3fa, type: 3}
+      propertyPath: 'boltList.Array.data[2]'
+      value: 
+      objectReference: {fileID: 4346026701363182583}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 496436515852177813, guid: e80408eefa9af7a44ab32893797fb3fa, type: 3}
@@ -555,9 +567,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4446c2241e274eb42b89740187020b54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  boltColor1: {r: 0, g: 0, b: 0, a: 0}
-  boltColor2: {r: 0, g: 0, b: 0, a: 0}
-  boltColor3: {r: 0, g: 0, b: 0, a: 0}
+  boltColor1: {r: 0.82641506, g: 0.4225631, b: 0.4225631, a: 1}
+  boltColor2: {r: 0.36168742, g: 0.6679245, b: 0.36168742, a: 1}
+  boltColor3: {r: 0.25779274, g: 0.25779274, b: 0.5622641, a: 1}
 --- !u!1001 &1943208196489218942
 PrefabInstance:
   m_ObjectHideFlags: 0

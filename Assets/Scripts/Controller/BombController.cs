@@ -106,6 +106,11 @@ public class BombController : MonoBehaviour
         return activeBomb;
     }
 
+    public void Rage()
+    {
+        Debug.Log("Rage!!!!!!!!!!!");
+    }
+
      // Update is called once per frame
     void Update()
     {

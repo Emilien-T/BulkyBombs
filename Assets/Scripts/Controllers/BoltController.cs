@@ -6,6 +6,7 @@ public class BoltController : MonoBehaviour
     [SerializeField] private Color boltColor1;
     [SerializeField] private Color boltColor2;
     [SerializeField] private Color boltColor3;
+    [SerializeField] private Animator animator;
     private BoltType boltType;
     private int boltingTimes = 0;
     private bool isFocused = false;
@@ -13,20 +14,22 @@ public class BoltController : MonoBehaviour
 
     public void SetBoltType(BoltType boltType)
     {
+        Debug.Log("Setting bolt type to " + boltType);
         this.boltType = boltType;
+        Renderer renderer = GetComponent<Renderer>();
         switch (boltType)
         {
             case BoltType.One:
-                GetComponent<SpriteRenderer>().color = boltColor1;
+                renderer.materials[0].color = boltColor1;
                 break;
             case BoltType.Two:
-                GetComponent<SpriteRenderer>().color = boltColor2;
+                renderer.materials[0].color = boltColor2;
                 break;
             case BoltType.Three:
-                GetComponent<SpriteRenderer>().color = boltColor3;
+                renderer.materials[0].color = boltColor3;
                 break;
             default:
-                GetComponent<SpriteRenderer>().color = Color.white;
+                renderer.materials[0].color = Color.white;
                 break;
         }
     }
@@ -49,6 +52,7 @@ public class BoltController : MonoBehaviour
             return true;
         }
         boltingTimes++;
+        animator.SetTrigger("Bolt");
         return false;
     }
 
