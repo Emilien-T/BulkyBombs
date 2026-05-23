@@ -10,6 +10,9 @@ public class BombController : MonoBehaviour
     [SerializeField] private Vector3 transitionOut;
     [SerializeField] private ButtonType buttonType;
     [SerializeField] private BoltType[] bolts = new BoltType[3];
+    [SerializeField] private BoltMinigame boltMinigame;
+    [SerializeField] private ButtonMinigame buttonMinigame;
+    [SerializeField] private NailsMinigame nailsMinigame;
 
     private Tween _moveTween;
     private bool activeBomb = false;
@@ -51,9 +54,23 @@ public class BombController : MonoBehaviour
         _moveTween?.Kill();
         _moveTween = transform.DOMove(transitionOut, 2f).SetEase(Ease.Linear).OnComplete(() =>
         {
-            BombSpawner.Instance.SpawnBomb();
-            Destroy(gameObject);
+            if (CheckBombCompleted())
+            {
+                BombSpawner.Instance.SpawnBomb();
+                Destroy(gameObject);
+            }
+            else
+            {
+                // For now, but this is the lose state. TODO: Add lose screen later.
+                BombSpawner.Instance.SpawnBomb();
+                Destroy(gameObject);
+            }
         });
+    }
+
+    public bool CheckBombCompleted()
+    {
+        return buttonMinigame.completed && boltMinigame.completed && nailsMinigame.completed;
     }
 
      // Update is called once per frame

@@ -2,6 +2,9 @@ using UnityEngine;
 
 public class NailsMinigame : MonoBehaviour
 {
+    [SerializeField] private BombController bombController;
+    public bool completed = false;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {

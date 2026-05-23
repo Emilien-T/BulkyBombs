@@ -1,11 +1,7 @@
-using System.Collections.Generic;
 using UnityEngine;
 
-public class BoltMinigame : MonoBehaviour
+public class CameraController : MonoBehaviour
 {
-    [SerializeField] private BombController bombController;
-    [SerializeField] private List<GameObject> boltList;
-    public bool completed = false;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {

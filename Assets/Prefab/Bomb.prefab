@@ -237,6 +237,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 426063918c947f64aab9b1de116c6b05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  bombController: {fileID: 8488100432659126610}
+  completed: 0
 --- !u!1 &1241998223858909625
 GameObject:
   m_ObjectHideFlags: 0
@@ -281,6 +283,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fffbf46dbc220d47890cdfb11715c04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  bombController: {fileID: 8488100432659126610}
+  completed: 0
 --- !u!1 &3473110035690833674
 GameObject:
   m_ObjectHideFlags: 0
@@ -414,6 +418,9 @@ MonoBehaviour:
   transitionOut: {x: -4.21, y: 1.129, z: 2.728}
   buttonType: 0
   bolts: 000000000000000000000000
+  boltMinigame: {fileID: 5439164584717974715}
+  buttonMinigame: {fileID: 7610411605591954296}
+  nailsMinigame: {fileID: 8883193968413115205}
 --- !u!1 &5278499234414017423
 GameObject:
   m_ObjectHideFlags: 0
@@ -461,6 +468,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d0f7aad9187b30408de79c919390a66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  bombController: {fileID: 8488100432659126610}
+  boltList: []
+  completed: 0
 --- !u!1 &5688830433272847327
 GameObject:
   m_ObjectHideFlags: 0
