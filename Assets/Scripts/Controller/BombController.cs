@@ -28,6 +28,7 @@ public class BombController : MonoBehaviour
             2 => ButtonType.Triangle,
             _ => ButtonType.Umbrella
         };
+        buttonMinigame.Setup(buttonType);
 
         for (int i = 0; i < bolts.Length; i++)
         {
