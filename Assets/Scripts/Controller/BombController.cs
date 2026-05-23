@@ -44,17 +44,21 @@ public class BombController : MonoBehaviour
 
     public void NextMiniGame()
     {
+        Minigame chosenMinigame = null;
         switch (currentMinigame)
         {
             case MinigameType.None:
+                chosenMinigame = buttonMinigame;
                 currentMinigame = MinigameType.Button;
                 break;
             case MinigameType.Button:
                 buttonMinigame.OnDeselect();
+                chosenMinigame = boltMinigame;
                 currentMinigame = MinigameType.Bolt;
                 break;
             case MinigameType.Bolt:
                 boltMinigame.OnDeselect();
+                chosenMinigame = nailsMinigame;
                 currentMinigame = MinigameType.Nails;
                 break;
             case MinigameType.Nails:
@@ -81,7 +85,7 @@ public class BombController : MonoBehaviour
         }
         else 
         {
-            CameraController.Instance.TransitionToMinigame(currentMinigame);
+            CameraController.Instance.TransitionToMinigame(currentMinigame, chosenMinigame);
         }
     }
 
@@ -98,7 +102,7 @@ public class BombController : MonoBehaviour
     public void TransitionOut()
     {
         currentMinigame = MinigameType.None;
-        CameraController.Instance.TransitionToMinigame(currentMinigame);
+        CameraController.Instance.TransitionToMinigame(currentMinigame, null);
         _moveTween?.Kill();
         _moveTween = transform.DOMove(transitionOut, 2f).SetEase(Ease.Linear).OnComplete(() =>
         {

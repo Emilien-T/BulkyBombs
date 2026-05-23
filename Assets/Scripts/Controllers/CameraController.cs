@@ -10,18 +10,18 @@ public class CameraController : Controller<CameraController>
     [SerializeField] private Transform nailTransform;
     [SerializeField] private float transitionTime = 0.7f;
 
-    public void TransitionToMinigame(Enums.MinigameType minigameType)
+    public void TransitionToMinigame(Enums.MinigameType minigameType, Minigame minigame)
     {
         switch (minigameType)
         {
             case Enums.MinigameType.Button:
-                GoToButton();
+                GoToButton(minigame);
                 break;
             case Enums.MinigameType.Bolt:
-                GoToBolt();
+                GoToBolt(minigame);
                 break;
             case Enums.MinigameType.Nails:
-                GoToNail();
+                GoToNail(minigame);
                 break;
             case Enums.MinigameType.Zen:
                 GoToZen();
@@ -47,26 +47,26 @@ public class CameraController : Controller<CameraController>
 
     public void GoToZen()
     {
-        Transition(zenTransform);
+        Transition(zenTransform, null);
     }
 
     public void GoToBase()
     {
-        Transition(baseTransform);
+        Transition(baseTransform, null);
     }
 
-    public void GoToBolt()
+    public void GoToBolt(Minigame boltMinigame)
     {
-        Transition(boltTransform);
+        Transition(boltTransform, boltMinigame);
     }
 
-    public void GoToButton()
+    public void GoToButton(Minigame buttonMinigame)
     {
-        Transition(buttonTransform);
+        Transition(buttonTransform, buttonMinigame);
     }
 
-    public void GoToNail()
+    public void GoToNail(Minigame nailMinigame)
     {
-        Transition(nailTransform);
+        Transition(nailTransform, nailMinigame);
     }
 }
