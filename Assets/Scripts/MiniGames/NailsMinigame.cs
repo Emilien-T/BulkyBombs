@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class NailsMinigame : MonoBehaviour
+public class NailsMinigame : Minigame
 {
     [SerializeField] private BombController bombController;
     public bool completed = false;
