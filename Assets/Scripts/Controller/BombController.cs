@@ -41,6 +41,7 @@ public class BombController : MonoBehaviour
         _moveTween?.Kill();
         _moveTween = transform.DOMove(workPosition, 2f).SetEase(Ease.Linear).OnComplete(()=>
         {
+            TimerController.Instance.StartTimer(bombTimer, this);
             activeBomb = true;
         });
     }
@@ -50,6 +51,7 @@ public class BombController : MonoBehaviour
         _moveTween?.Kill();
         _moveTween = transform.DOMove(transitionOut, 2f).SetEase(Ease.Linear).OnComplete(() =>
         {
+            BombSpawner.Instance.SpawnBomb();
             Destroy(gameObject);
         });
     }

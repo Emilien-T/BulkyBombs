@@ -5,4 +5,9 @@ public class GameController : Controller<GameController>
         DontDestroyOnLoad(this);
         LeaderboardService.LoadLeaderboard();
     }
+
+    public void OnAttack()
+    {
+        BombSpawner.Instance.SpawnBomb();
+    }
 }
