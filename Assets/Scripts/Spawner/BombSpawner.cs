@@ -9,7 +9,11 @@ public class BombSpawner : Controller<BombSpawner>
     // Update is called once per frame
     void Update()
     {
-        
+        while (true)
+        {
+            SpawnBomb();
+            System.Threading.Thread.Sleep((int)(spawnInterval * 1000));
+        }
     }
 
     public void SpawnBomb()
