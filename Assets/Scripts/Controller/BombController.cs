@@ -1,18 +1,21 @@
-using UnityEngine;
+using DG.Tweening;
 using Enums;
 using System.Collections.Generic;
+using UnityEngine;
 
 public class BombController : MonoBehaviour
 {
-    [SerializeField] public float bombTimer = 30f;
+    [SerializeField] public float bombTimer = 2f;
     [SerializeField] private Vector3 workPosition;
     [SerializeField] private Vector3 transitionOut;
     [SerializeField] private ButtonType buttonType;
     [SerializeField] private BoltType[] bolts = new BoltType[3];
+
+    private Tween _moveTween;
+    private bool activeBomb = false;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
         buttonType = Random.Range(0, 4) switch
         {
             0 => ButtonType.Circle,
@@ -30,11 +33,38 @@ public class BombController : MonoBehaviour
                 _ => BoltType.Three
             };
         }
+        StartConveyor();
     }
 
-    // Update is called once per frame
+    private void StartConveyor()
+    {
+        _moveTween?.Kill();
+        _moveTween = transform.DOMove(workPosition, 2f).SetEase(Ease.Linear).OnComplete(()=>
+        {
+            activeBomb = true;
+        });
+    }
+
+    public void TransitionOut()
+    {
+        _moveTween?.Kill();
+        _moveTween = transform.DOMove(transitionOut, 2f).SetEase(Ease.Linear).OnComplete(() =>
+        {
+            Destroy(gameObject);
+        });
+    }
+
+     // Update is called once per frame
     void Update()
     {
-        
+        if (activeBomb)
+        {
+            bombTimer -= Time.deltaTime;
+            if (bombTimer <= 0)
+            {
+                activeBomb = false;
+                TransitionOut();
+            }
+        }
     }
 }

@@ -29,9 +29,23 @@ public static class LeaderboardService
     }
     public static void LoadLeaderboard() 
     {
-        string json = File.ReadAllText(path);
+        // Ensure directory exists
+        if (!Directory.Exists(Application.persistentDataPath))
+        {
+            Directory.CreateDirectory(Application.persistentDataPath);
+        }
+
+        string json = File.Exists(path) ? File.ReadAllText(path) : "{}";
         leaderboard = JsonUtility.FromJson<LeaderboardList>(json);
-        leaderboard.leaderboardEntries = leaderboard.leaderboardEntries.OrderByDescending(val => val.score).ToList();
+        if(leaderboard == null) 
+        {
+            leaderboard = new LeaderboardList();
+            leaderboard.leaderboardEntries = new List<LeaderboardEntry>();
+        }
+        else
+        {
+            leaderboard.leaderboardEntries = leaderboard.leaderboardEntries.OrderByDescending(val => val.score).ToList();
+        }
     }
 }
 [Serializable]
