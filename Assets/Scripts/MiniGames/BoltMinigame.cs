@@ -18,11 +18,9 @@ public class BoltMinigame : Minigame
      public override void StartGame() { }
      public override void OnSelect()
      {
-         isFocused = true;
      }
      public override void OnDeselect()
      {
-         isFocused = false;
      }
      public override void ForceDeselect()
      {

@@ -5,10 +5,10 @@ using UnityEngine;
 
 public class ButtonMinigame : Minigame
 {
-    [SerializeField] private BombController bombController;
+    [SerializeField] public BombController bombController;
     public int gunkLeft = 0;
     private Brush brush;
-    public int GoalPixelsLeft;
+    public int GoalPixelsLeft = 28000;
     public GameObject Triangle;
     public GameObject Circle;
     public GameObject Star;
@@ -24,6 +24,7 @@ public class ButtonMinigame : Minigame
     {
         if (pixelsLeft <= GoalPixelsLeft) 
         {
+            brush.AutoCleanup();
             WinGame();
         }
     }
@@ -61,12 +62,10 @@ public class ButtonMinigame : Minigame
     }
     public override void OnSelect()
     {
-        isFocused = true;
     }
 
     public override void OnDeselect()
     {
-        isFocused = false;
     }
     public override void ForceDeselect()
     {
@@ -76,10 +75,12 @@ public class ButtonMinigame : Minigame
     {
         Debug.Log("Yay");
         completed = true;
+        bombController.NextMiniGame();
     }
 
     public override void LoseGame()
     {
         Debug.Log("Lost");
+        completed = true;
     }
 }

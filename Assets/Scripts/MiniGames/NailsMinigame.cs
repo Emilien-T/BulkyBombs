@@ -31,7 +31,7 @@ public class NailsMinigame : Minigame
     }
     private void Hammer(bool val) 
     {
-        if (nailingCoroutine != null || completed || !isFocused || !val)
+        if (nailingCoroutine != null || completed || bombController.currentMinigame != Enums.MinigameType.Nails || !val)
         {
             return;
         }
@@ -50,7 +50,6 @@ public class NailsMinigame : Minigame
     }
     public override void OnSelect()
     {
-        isFocused = true;
         timer = 0;
         if (timerCoroutine != null) 
         {
@@ -62,7 +61,6 @@ public class NailsMinigame : Minigame
     }
     public override void OnDeselect()
     {
-        isFocused = false;
 
         if (timerCoroutine != null)
         {

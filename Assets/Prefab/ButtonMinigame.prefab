@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 1495058778458125772}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.624, z: 0}
+  m_LocalPosition: {x: 0, y: -0.42, z: 0}
   m_LocalScale: {x: 0.3, y: 1, z: 0.3}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -63,7 +63,7 @@ Transform:
   m_GameObject: {fileID: 4192123380024353474}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.285, y: 0.5, z: 0}
+  m_LocalPosition: {x: -0.285, y: 0.7, z: 0}
   m_LocalScale: {x: 0.15, y: 0.15, z: 0.15}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -150,6 +150,7 @@ MonoBehaviour:
   minigameManager: {fileID: 0}
   MoveSensitivity: 1
   brushSize: 0.1
+  button: {fileID: 1495058778458125772}
 --- !u!1 &6195834391392408743
 GameObject:
   m_ObjectHideFlags: 0
@@ -258,10 +259,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ButtonMinigame
   completed: 0
-  isFocused: 1
   bombController: {fileID: 0}
   gunkLeft: 0
-  GoalPixelsLeft: 100
+  GoalPixelsLeft: 28000
   Triangle: {fileID: 4142784307668309416}
   Circle: {fileID: 4089188437908808975}
   Star: {fileID: 2054184771356589908}
@@ -294,7 +294,7 @@ Transform:
   m_GameObject: {fileID: 7892666014785417663}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.5, z: 0}
+  m_LocalPosition: {x: 0, y: 0.7, z: 0}
   m_LocalScale: {x: 0.07, y: 0.07, z: 0.07}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -513,11 +513,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 75c26da7d8fa14349b4d659710530c19, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 75c26da7d8fa14349b4d659710530c19, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.1
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 75c26da7d8fa14349b4d659710530c19, type: 3}
       propertyPath: m_LocalPosition.z

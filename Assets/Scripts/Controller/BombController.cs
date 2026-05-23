@@ -13,7 +13,7 @@ public class BombController : MonoBehaviour
     [SerializeField] private BoltMinigame boltMinigame;
     [SerializeField] private ButtonMinigame buttonMinigame;
     [SerializeField] private NailsMinigame nailsMinigame;
-    private MinigameType currentMinigame = MinigameType.None;
+    public MinigameType currentMinigame = MinigameType.None;
     private int currentMinigameIndex = 0;
 
     private Tween _moveTween;
