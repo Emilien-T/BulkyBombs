@@ -8,7 +8,7 @@ public class GameController : Controller<GameController>
 
     private void Start()
     {
-        InputController.Instance.buttonAny += NextTask;
+        InputController.Instance.button0 += NextTask;
     }
 
     private void NextTask(bool startingPress)
