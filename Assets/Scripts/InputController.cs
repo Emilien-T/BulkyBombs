@@ -1,10 +1,11 @@
 using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Windows;
 
-public class InputManager : MonoBehaviour
+[RequireComponent(typeof(PlayerInput))]
+public class InputController : Controller<InputController>
 {
-    public static InputManager instance;
     private PlayerInput pInput;
 
     public event Action<bool> button0;
@@ -19,29 +20,14 @@ public class InputManager : MonoBehaviour
     public bool[] buttonsPressed = new bool[6];
 
     public bool DebugLog;
+    private bool initialized = false;
 
-    private void Awake()
+    private void Update()
     {
-        if (instance != null)
-        {
-            Destroy(this);
-            return;
-        }
-        else 
-        {
-            instance = this;
-            DontDestroyOnLoad(gameObject);
-            Setup();
-        }
-    }
+        if (initialized) return;
+        initialized = true;
 
-    private void Setup() 
-    {
         pInput = GetComponent<PlayerInput>();
-    }
-
-    private void Start()
-    {
         pInput.actions["Move"].performed += MovePerformed;
         pInput.actions["Move"].canceled += MovePerformed;
         pInput.actions["Button0"].started += (ctx) => ButtonPressed(ctx, 0);
