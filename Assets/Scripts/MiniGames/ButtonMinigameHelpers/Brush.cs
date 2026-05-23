@@ -15,9 +15,11 @@ public class Brush : MonoBehaviour
     public float MoveSensitivity;
     public float brushSize;
     public GameObject button;
+    public AnimationCurve buttonPressCurve;
 
     private bool isBuffing;
     private Vector2 moveDir;
+    private Coroutine buttonPressCo;
 
     void Start()
     {
@@ -59,11 +61,26 @@ public class Brush : MonoBehaviour
 
         if (Physics.Raycast(ray, Mathf.Infinity, buttonLayer))
         {
-            button.transform.localPosition += new Vector3(0,-0.15f,0);
+            if (buttonPressCo == null) 
+            {
+                buttonPressCo = StartCoroutine(lowerButtonRoutine());
+            }
             minigameManager.LoseGame();
         }
     }
-
+    private IEnumerator lowerButtonRoutine() 
+    {
+        float timer = 0;
+        Vector3 finalPos = button.transform.position + new Vector3(0,-0.1f,0);
+        Vector3 startPos = button.transform.position;
+        while (timer < 0.4f) 
+        {
+            timer += Time.deltaTime;
+            float t = buttonPressCurve.Evaluate(timer/0.4f);
+            button.transform.position = Vector3.LerpUnclamped(startPos, finalPos, t);
+            yield return null;
+        }
+    }
     void PaintAt(Vector2 uv)
     {
         brushMaterial.SetVector("_BrushUV", new Vector4(uv.x, uv.y, 0, 0));
