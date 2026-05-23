@@ -6,29 +6,23 @@ public class GameController : Controller<GameController>
         LeaderboardService.LoadLeaderboard();
     }
 
-    public void OnAttack()
+    private void Start()
     {
-        BombSpawner.Instance.SpawnBomb();
+        InputController.Instance.buttonAny += NextTask;
     }
 
-    public void OnButton1()
+    private void NextTask(bool startingPress)
     {
-        CameraController.Instance.GoToBase();
+        if (startingPress)
+        {
+            if(BombSpawner.Instance.GetCurrentBomb() == null || !BombSpawner.Instance.GetCurrentBomb().IsActiveBomb())
+            {
+                CameraController.Instance.CantStartYet();
+            }
+            else
+            {
+                BombSpawner.Instance.GetCurrentBomb().NextMiniGame();
+            }
+        }
     }
-
-    public void OnButton2()
-    {
-        CameraController.Instance.GoToBolt();
-    }
-
-    public void OnButton3()
-    {
-        CameraController.Instance.GoToButton();
-    }
-
-    public void OnButton0()
-    {
-        CameraController.Instance.GoToZen();
-    }
-
 }

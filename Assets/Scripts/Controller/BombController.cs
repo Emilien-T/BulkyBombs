@@ -13,6 +13,7 @@ public class BombController : MonoBehaviour
     [SerializeField] private BoltMinigame boltMinigame;
     [SerializeField] private ButtonMinigame buttonMinigame;
     [SerializeField] private NailsMinigame nailsMinigame;
+    private MinigameType currentMinigame = MinigameType.None;
 
     private Tween _moveTween;
     private bool activeBomb = false;
@@ -39,6 +40,30 @@ public class BombController : MonoBehaviour
         StartConveyor();
     }
 
+    public void NextMiniGame()
+    {
+        switch (currentMinigame)
+        {
+            case MinigameType.None:
+                currentMinigame = MinigameType.Button;
+                break;
+            case MinigameType.Button:
+                currentMinigame = MinigameType.Bolt;
+                break;
+            case MinigameType.Bolt:
+                currentMinigame = MinigameType.Nails;
+                break;
+            case MinigameType.Nails:
+                currentMinigame = MinigameType.None;
+                break;
+            case MinigameType.Zen:
+                break;
+            default:
+                break;
+        }
+        CameraController.Instance.TransitionToMinigame(currentMinigame);
+    }
+
     private void StartConveyor()
     {
         _moveTween?.Kill();
@@ -51,6 +76,8 @@ public class BombController : MonoBehaviour
 
     public void TransitionOut()
     {
+        currentMinigame = MinigameType.None;
+        CameraController.Instance.TransitionToMinigame(currentMinigame);
         _moveTween?.Kill();
         _moveTween = transform.DOMove(transitionOut, 2f).SetEase(Ease.Linear).OnComplete(() =>
         {
@@ -71,6 +98,11 @@ public class BombController : MonoBehaviour
     public bool CheckBombCompleted()
     {
         return buttonMinigame.completed && boltMinigame.completed && nailsMinigame.completed;
+    }
+
+    public bool IsActiveBomb()
+    {
+        return activeBomb;
     }
 
      // Update is called once per frame

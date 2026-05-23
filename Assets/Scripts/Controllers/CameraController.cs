@@ -10,6 +10,33 @@ public class CameraController : Controller<CameraController>
     [SerializeField] private Transform nailTransform;
     [SerializeField] private float transitionTime = 0.7f;
 
+    public void TransitionToMinigame(Enums.MinigameType minigameType)
+    {
+        switch (minigameType)
+        {
+            case Enums.MinigameType.Button:
+                GoToButton();
+                break;
+            case Enums.MinigameType.Bolt:
+                GoToBolt();
+                break;
+            case Enums.MinigameType.Nails:
+                GoToNail();
+                break;
+            case Enums.MinigameType.Zen:
+                GoToZen();
+                break;
+            default:
+                GoToBase();
+                break;
+        }
+    }
+
+    public void CantStartYet()
+    {
+        transform.DOShakePosition(0.2f, strength: 0.1f, vibrato: 40, randomness: 0).SetEase(Ease.OutQuad);
+    }
+
     private void Transition(Transform target)
     {
         Sequence seq = DOTween.Sequence();
