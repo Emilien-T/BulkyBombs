@@ -38,7 +38,7 @@ public class Brush : MonoBehaviour
     }
     void Update()
     {
-        if(!minigameManager.isFocused) return;
+        if(!minigameManager.isFocused || minigameManager.completed) return;
         transform.localPosition += new Vector3(moveDir.x, 0, moveDir.y) * MoveSensitivity * Time.deltaTime;
         if (!isBuffing) return;
 
@@ -82,7 +82,7 @@ public class Brush : MonoBehaviour
             if (p.a > 0.1f) remaining++;
 
         pixelsLeft?.Invoke(remaining);
-        Debug.Log(remaining);
+        Debug.Log("pixels left: " + remaining);
 
         Destroy(readback);
     }
