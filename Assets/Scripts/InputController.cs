@@ -20,13 +20,10 @@ public class InputController : Controller<InputController>
     public bool[] buttonsPressed = new bool[6];
 
     public bool DebugLog;
-    private bool initialized = false;
 
-    private void Update()
+    protected override void MyStart()
     {
-        if (initialized) return;
-        initialized = true;
-
+        DontDestroyOnLoad(this);
         pInput = GetComponent<PlayerInput>();
         pInput.actions["Move"].performed += MovePerformed;
         pInput.actions["Move"].canceled += MovePerformed;

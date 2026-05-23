@@ -22,7 +22,9 @@ public class Controller<T> : MonoBehaviour where T : Controller<T>, new()
         }
 
         Instance = (T)this;
+        MyStart();
     }
+    protected virtual void MyStart() { }
 
     public void OnDestory()
     {
