@@ -11,7 +11,7 @@ namespace AudioSystem
         bool returnedToPool;
         private void Awake()
         {
-            audioSource = gameObject.GetOrAdd<AudioSource>();
+            audioSource = gameObject.AddComponent<AudioSource>();
         }
 
         public void Initialize(SoundData data) 
