@@ -15,13 +15,14 @@ public class InputController : Controller<InputController>
     public event Action<bool> button4;
     public event Action<bool> button5;
     public event Action<Vector2> directionalControls;
+    public event Action<bool> buttonAny;
 
     public Vector2 prevDirection;
     public bool[] buttonsPressed = new bool[6];
 
     public bool DebugLog;
 
-    protected override void MyStart()
+    protected override void MyAwake()
     {
         DontDestroyOnLoad(this);
         pInput = GetComponent<PlayerInput>();
@@ -58,6 +59,8 @@ public class InputController : Controller<InputController>
         bool val = ctx.ReadValue<float>() > 0.5f;
         buttonsPressed[buttonIndex] = val;
         if (DebugLog) Debug.Log("Button pressed: " + val + " button Index: " + buttonIndex);
+
+        buttonAny?.Invoke(val);
         switch (buttonIndex)
         {
             case 0:

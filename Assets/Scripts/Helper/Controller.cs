@@ -12,7 +12,7 @@ public class Controller<T> : MonoBehaviour where T : Controller<T>, new()
 {
     public static T Instance { get; private set; }
 
-    public void Start()
+    public void Awake()
     {
         if (Instance != null)
         {
@@ -22,9 +22,9 @@ public class Controller<T> : MonoBehaviour where T : Controller<T>, new()
         }
 
         Instance = (T)this;
-        MyStart();
+        MyAwake();
     }
-    protected virtual void MyStart() { }
+    protected virtual void MyAwake() { }
 
     public void OnDestory()
     {
