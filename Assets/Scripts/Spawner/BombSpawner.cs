@@ -18,7 +18,7 @@ public class BombSpawner : Controller<BombSpawner>
 
     public void SpawnBomb()
     {
-        GameObject bomb = Instantiate(bombPrefab, transform.position, Quaternion.identity);
+        GameObject bomb = Instantiate(bombPrefab, transform.position, bombPrefab.transform.rotation);
         currentBomb = bomb.GetComponent<BombController>();
         currentBomb.bombTimer = 15f;
     }
