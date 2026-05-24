@@ -1,3 +1,4 @@
+using AudioSystem;
 using DG.Tweening;
 using UnityEngine;
 
@@ -13,24 +14,31 @@ public class CameraController : Controller<CameraController>
     [SerializeField] private Animator rightHandAnimator;
     [SerializeField] public Transform leftHandTransform;
     [SerializeField] public Transform rightHandTransform;
+    private SoundBuilder sweepSound;
 
     public void TransitionToMinigame(Enums.MinigameType minigameType, Minigame minigame)
     {
+        sweepSound?.Stop();
         switch (minigameType)
         {
             case Enums.MinigameType.Button:
+                sweepSound = AudioLibrary.Instance.SweepToWork();
                 GoToButton(minigame);
                 break;
             case Enums.MinigameType.Bolt:
+                sweepSound = AudioLibrary.Instance.SweepToWork();
                 GoToBolt(minigame);
                 break;
             case Enums.MinigameType.Nails:
+                sweepSound = AudioLibrary.Instance.SweepToWork();
                 GoToNail(minigame);
                 break;
             case Enums.MinigameType.Zen:
+                sweepSound = AudioLibrary.Instance.SweepToZen();
                 GoToZen();
                 break;
             default:
+                sweepSound = AudioLibrary.Instance.SweepToWork();
                 GoToBase();
                 break;
         }

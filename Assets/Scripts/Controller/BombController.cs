@@ -157,6 +157,8 @@ public class BombController : MonoBehaviour
         currentMinigame = MinigameType.None;
         CameraController.Instance.TransitionToMinigame(currentMinigame, null);
         _moveTween?.Kill();
+        AudioLibrary.Instance.BombGoingOut();
+        AudioLibrary.Instance.Conveyor();
         _moveTween = transform.DOMove(transitionOut, 2f).SetEase(Ease.Linear).OnComplete(() =>
         {
             tempMinigame = MinigameType.None;
@@ -193,6 +195,7 @@ public class BombController : MonoBehaviour
         tightenAndUI.SetActive(false);
         InteractUI.SetActive(false);
         CameraController.Instance.Rage();
+        AudioLibrary.Instance.GettingMad();
         DOVirtual.DelayedCall(5f, () =>
         {
             currentMinigame = tempMinigame;
@@ -231,6 +234,7 @@ public class BombController : MonoBehaviour
                 default:
                     break;
             }
+            AudioLibrary.Instance.CalmingDown();
             CameraController.Instance.TransitionToMinigame(currentMinigame, GetCurrentMinigame());
             Debug.Log("Back to previous minigame: " + currentMinigame);
         });
