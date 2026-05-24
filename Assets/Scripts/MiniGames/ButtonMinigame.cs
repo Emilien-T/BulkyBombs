@@ -85,5 +85,6 @@ public class ButtonMinigame : Minigame
     {
         brush.animator.SetTrigger("Down");
         lost = true;
+        bombController.SendNukes();
     }
 }
