@@ -42,7 +42,7 @@ public class CameraController : Controller<CameraController>
         Sequence seq = DOTween.Sequence();
         seq.Append(transform.DOMove(target.position, transitionTime).SetEase(Ease.InOutQuad));
         seq.Join(transform.DORotate(target.rotation.eulerAngles, transitionTime).SetEase(Ease.InOutQuad));
-        if(targetMinigame != null) seq.onComplete += () => targetMinigame.OnSelect();
+        if(targetMinigame != null) targetMinigame.OnSelect();
     }
 
     public void GoToZen()
