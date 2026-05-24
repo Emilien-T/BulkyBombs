@@ -17,6 +17,7 @@ public class NailsMinigame : Minigame
     public float successNailTime;
     public float failNailTime;
     public bool timerPaused;
+    public Animator lidAnimator;
     private void Start()
     {
         InputController.Instance.button1 += Hammer;
@@ -58,10 +59,15 @@ public class NailsMinigame : Minigame
         }
         timerCoroutine = StartCoroutine(timerRoutine());
         nails[currentNailIndex].StartNail();
+        lidAnimator.SetTrigger("Close");
+        // disable hand cuz we want our own
+        GameController.Instance.rightHand.SetActive(false);
     }
     public override void OnDeselect()
     {
-
+        // reenable hand cuz we want our own
+        GameController.Instance.rightHand.SetActive(true);
+        nails[currentNailIndex].CancelNail();
         if (timerCoroutine != null)
         {
             StopCoroutine(timerCoroutine);
@@ -71,6 +77,11 @@ public class NailsMinigame : Minigame
         {
             StopCoroutine(nailingCoroutine);
             nailingCoroutine = null;
+        }
+        if (currentNailIndex == 0) 
+        {
+
+            lidAnimator.SetTrigger("Open");
         }
     }
     public override void ForceDeselect() 
@@ -93,6 +104,7 @@ public class NailsMinigame : Minigame
         nailingCoroutine = null;
         timer = 0;
         nails[currentNailIndex].nailingUI.Disable();
+        nails[currentNailIndex].nailingUI.gameObject.SetActive(false);
         if (nails.Count > currentNailIndex + 1)
         {
             currentNailIndex++;

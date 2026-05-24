@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using static UnityEngine.Audio.GeneratorInstance;
 
 public class NailHammerUI : MonoBehaviour 
 {
@@ -16,8 +17,15 @@ public class NailHammerUI : MonoBehaviour
     private bool isEnabled;
     private Coroutine displayTimerCoroutine;
     private bool timerStopped;
+    private bool initialized = false;
     public void Start()
     {
+    }
+    private void Setup() 
+    {
+
+        if (initialized) return;
+        initialized = true;
         uiMovingNailRT = uiMovingNail.GetComponent<RectTransform>();
         uiMovingNailStartPos = uiMovingNailRT.anchoredPosition;
         uiMovingNailEndPos = uiMovingNailStartPos + uiMovingNailMoveDist;
@@ -39,9 +47,11 @@ public class NailHammerUI : MonoBehaviour
     }
     public void Enable()
     {
+        Setup();
         uiMovingNail.SetActive(true);
         BackgroundUI.SetActive(true);
         isEnabled = true;
+        timerStopped = false;
         if (displayTimerCoroutine != null) 
         {
             StopCoroutine(displayTimerCoroutine);
@@ -54,7 +64,6 @@ public class NailHammerUI : MonoBehaviour
         uiMovingNail.SetActive(false);
         BackgroundUI.SetActive(false);
         isEnabled = false;
-
         if (displayTimerCoroutine != null)
         {
             StopCoroutine(displayTimerCoroutine);
