@@ -1,3 +1,4 @@
+using DG.Tweening;
 using Enums;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,7 +9,7 @@ public class BoltMinigame : Minigame
     [SerializeField] private List<BoltController> boltList;
     private bool boltingState = false;
     private int boltIndex = 0;
-    private int boltingPush = 0;
+    private bool moveBoltFlag = false;
     private BoltType[] bolts = new BoltType[3];
     public void SetBolts(BoltType[] bolts)
     {
@@ -21,53 +22,80 @@ public class BoltMinigame : Minigame
 
     public override void StartGame()
     {
-        boltingPush = 0;
         boltIndex = 0;
     }
     public override void OnSelect()
     {
-        boltingPush = 0;
         boltIndex = 0;
         boltingState = false;
         InputController.Instance.directionalControls += BoltControl;
+        boltList[boltIndex].Focus();
     }
 
     private void BoltControl(Vector2 move)
     {
-        if(move.x > 0.5f && !boltingState)
+        if(move.x > 0.8f && !boltingState)
         {
             boltingState = true;
             if (boltList[boltIndex].Bolt())
             {
+                InputController.Instance.directionalControls -= BoltControl;
                 bombController.Rage();
+                DOVirtual.DelayedCall(5f, () =>
+                {
+                    InputController.Instance.directionalControls += BoltControl;
+                });
+                }
+            bool tempCompleted = true;
+            for (int i = 0; i < boltList.Count; i++)
+            {
+                tempCompleted &= boltList[i].IsBolted();
             }
+            completed = tempCompleted;
         }
-        else if (move.x < -0.5f)
+        else if (move.x < -0.8f)
         {
             boltingState = false;
         }
-        if (move.y > 0.5f && boltList[boltIndex].IsBolted())
+        else if (move.y > 0.8f && !moveBoltFlag)
         {
-            boltIndex++;
-            if (boltIndex == bolts.Length)
-            {
-                boltIndex = 0;
-            }
-        }
-        else if (move.y < -0.5f)
-        {
+            moveBoltFlag = true;
+            boltList[boltIndex].UnFocus();
             boltIndex--;
             if (boltIndex < 0)
             {
                 boltIndex = bolts.Length - 1;
             }
+            boltList[boltIndex].Focus();
+        }
+        else if (move.y < -0.8f && !moveBoltFlag)
+        {
+            moveBoltFlag = true;
+            boltList[boltIndex].UnFocus();
+            boltIndex++;
+            if (boltIndex == bolts.Length)
+            {
+                boltIndex = 0;
+            }
+            boltList[boltIndex].Focus();
+        }
+        else if (Mathf.Abs(move.y) < 0.8f)
+        {
+            moveBoltFlag = false;
         }
     }
 
     public override void OnDeselect()
     {
         InputController.Instance.directionalControls -= BoltControl;
+        boltList[boltIndex].UnFocus();
     }
+
+    private void OnDestroy()
+    {
+        InputController.Instance.directionalControls -= BoltControl;
+    }
+
     public override void ForceDeselect()
     {
         OnDeselect();

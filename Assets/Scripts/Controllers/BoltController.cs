@@ -1,15 +1,21 @@
-using UnityEngine;
+using DG.Tweening;
 using Enums;
+using UnityEngine;
 
 public class BoltController : MonoBehaviour
 {
     [SerializeField] private Color boltColor1;
     [SerializeField] private Color boltColor2;
     [SerializeField] private Color boltColor3;
-    [SerializeField] private Animator animator;
     private BoltType boltType;
     private int boltingTimes = 0;
     private bool isFocused = false;
+    private Transform originalTranform;
+
+    private void Start()
+    {
+        originalTranform = transform;
+    }
 
 
     public void SetBoltType(BoltType boltType)
@@ -34,14 +40,13 @@ public class BoltController : MonoBehaviour
         }
     }
 
-    public void FocusOnBolt()
+    public void Focus()
     {
-        isFocused = true;
+        transform.DOScale(0.6f, 0.1f).SetEase(Ease.InOutQuad);
     }
-
-    public void UnfocusBolt()
+    public void UnFocus()
     {
-        isFocused = false;
+        transform.DOScale(0.5f, 0.1f).SetEase(Ease.InOutQuad);
     }
 
     public bool Bolt()
@@ -52,7 +57,8 @@ public class BoltController : MonoBehaviour
             return true;
         }
         boltingTimes++;
-        animator.SetTrigger("Bolt");
+        transform.rotation = originalTranform.rotation;
+        transform.DORotate(new Vector3(0f, 60f, 0f), 1f, RotateMode.LocalAxisAdd).SetEase(Ease.InOutQuad);
         return false;
     }
 

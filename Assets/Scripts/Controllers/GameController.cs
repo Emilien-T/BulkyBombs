@@ -1,5 +1,9 @@
-public class GameController : Controller<GameController> 
+using UnityEngine;
+
+public class GameController : Controller<GameController>
 {
+    public GameObject leftHand;
+    public GameObject rightHand;
     protected override void MyAwake()
     {
         DontDestroyOnLoad(this);
