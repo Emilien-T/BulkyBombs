@@ -20,7 +20,7 @@ public class CameraController : Controller<CameraController>
     protected override void MyAwake() 
     {
 
-        rageMat.SetFloat("_vignette_power", 10);
+        rageMat.SetFloat("_vignette_intensity", 0);
     }
     public void TransitionToMinigame(Enums.MinigameType minigameType, Minigame minigame)
     {
@@ -57,18 +57,18 @@ public class CameraController : Controller<CameraController>
         rightHandAnimator.SetTrigger("Zen");
         leftHandAnimator.SetTrigger("Zen");
         // 7 -> 3 during delay before zen
-        DOVirtual.Float(10f, 3f, 1f, value =>
+        DOVirtual.Float(0, 5f, 1f, value =>
         {
-            rageMat.SetFloat("_vignette_power", value);
+            rageMat.SetFloat("_vignette_intensity", value);
         });
 
         GoToZen(1f);
         GoToBase(4.8f);
 
         // 3 -> 7 ending at end of rage
-        DOVirtual.Float(3f, 10f, 4f, value =>
+        DOVirtual.Float(5f, 0f, 4f, value =>
         {
-            rageMat.SetFloat("_vignette_power", value);
+            rageMat.SetFloat("_vignette_intensity", value);
         })
         .SetDelay(1f);
 
