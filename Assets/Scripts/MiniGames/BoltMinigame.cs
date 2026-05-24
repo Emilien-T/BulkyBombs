@@ -62,7 +62,7 @@ public class BoltMinigame : Minigame
             }
             else
             {
-                Wrench.transform.DORotate(new Vector3(-30f, 0, 0f), 1f, RotateMode.LocalAxisAdd).SetEase(Ease.InOutQuad);
+                Wrench.transform.DORotate(new Vector3(-60f, 0, 0f), 1f, RotateMode.LocalAxisAdd).SetEase(Ease.InOutQuad);
             }
                 bool tempCompleted = true;
             for (int i = 0; i < boltList.Count; i++)
@@ -86,7 +86,7 @@ public class BoltMinigame : Minigame
         {
             if (boltingState)
             {
-                Wrench.transform.DORotate(new Vector3(30f, 0f, 0f), 1f, RotateMode.LocalAxisAdd).SetEase(Ease.InOutQuad);
+                Wrench.transform.DORotate(new Vector3(60f, 0f, 0f), 1f, RotateMode.LocalAxisAdd).SetEase(Ease.InOutQuad);
             }
             boltingState = false;
         }
