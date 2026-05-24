@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2093317525492193609}
   - component: {fileID: 1941004702671091127}
   - component: {fileID: 4016089198064359925}
+  - component: {fileID: 666539156854179114}
   m_Layer: 0
   m_Name: GameManagers
   m_TagString: Untagged
@@ -146,3 +147,15 @@ MonoBehaviour:
   defaultCapacity: 10
   maxPoolSize: 100
   frequentEmitterMax: 15
+--- !u!114 &666539156854179114
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3540856329009174228}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 116066e1866c241449d1a6a13c411a8b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SceneController
