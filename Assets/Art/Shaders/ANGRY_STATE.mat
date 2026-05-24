@@ -46,7 +46,7 @@ Material:
     - _Fullscreen_SrcAlphaBlend: 1
     - _Fullscreen_SrcColorBlend: 5
     - _vignette_intensity: 4.24
-    - _vignette_power: 9.995573
+    - _vignette_power: 10
     m_Colors:
     - _Color: {r: 0.764151, g: 0.14057496, b: 0.14057496, a: 1}
   m_BuildTextureStacks: []
