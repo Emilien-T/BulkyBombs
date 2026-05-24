@@ -11,8 +11,8 @@ public class CameraController : Controller<CameraController>
     [SerializeField] private float transitionTime = 0.7f;
     [SerializeField] private Animator leftHandAnimator;
     [SerializeField] private Animator rightHandAnimator;
-    [SerializeField] private Transform leftHandTransform;
-    [SerializeField] private Transform rightHandTransform;
+    [SerializeField] public Transform leftHandTransform;
+    [SerializeField] public Transform rightHandTransform;
 
     public void TransitionToMinigame(Enums.MinigameType minigameType, Minigame minigame)
     {

@@ -63,12 +63,12 @@ public class NailsMinigame : Minigame
         nails[currentNailIndex].StartNail();
         lidAnimator.SetTrigger("Close");
         // disable hand cuz we want our own
-        GameController.Instance.rightHand.SetActive(false);
+        CameraController.Instance.rightHandTransform.gameObject.SetActive(false);
     }
     public override void OnDeselect()
     {
         // reenable hand cuz we want our own
-        GameController.Instance.rightHand.SetActive(true);
+        CameraController.Instance.rightHandTransform.gameObject.SetActive(true);
         nails[currentNailIndex].CancelNail();
         if (timerCoroutine != null)
         {

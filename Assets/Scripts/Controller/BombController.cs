@@ -13,8 +13,14 @@ public class BombController : MonoBehaviour
     [SerializeField] private BoltMinigame boltMinigame;
     [SerializeField] private ButtonMinigame buttonMinigame;
     [SerializeField] private NailsMinigame nailsMinigame;
+    public GameObject nextTaskUI;
+    public GameObject InteractUI;
+    public GameObject polishUI;
+    public GameObject tightenAndUI;
     public MinigameType currentMinigame = MinigameType.None;
     private int currentMinigameIndex = 0;
+
+    private MinigameType tempMinigame;
 
     private Tween _moveTween;
     private bool activeBomb = false;
@@ -51,22 +57,42 @@ public class BombController : MonoBehaviour
             case MinigameType.None:
                 chosenMinigame = buttonMinigame;
                 currentMinigame = MinigameType.Button;
+                polishUI.SetActive(true);
+                nextTaskUI.SetActive(true);
+                tightenAndUI.SetActive(false);
+                InteractUI.SetActive(true);
                 break;
             case MinigameType.Button:
                 buttonMinigame.OnDeselect();
                 chosenMinigame = boltMinigame;
                 currentMinigame = MinigameType.Bolt;
+                polishUI.SetActive(false);
+                nextTaskUI.SetActive(true);
+                tightenAndUI.SetActive(true);
+                InteractUI.SetActive(false);
                 break;
             case MinigameType.Bolt:
                 boltMinigame.OnDeselect();
                 chosenMinigame = nailsMinigame;
                 currentMinigame = MinigameType.Nails;
+                polishUI.SetActive(false);
+                nextTaskUI.SetActive(true);
+                tightenAndUI.SetActive(false);
+                InteractUI.SetActive(true);
                 break;
             case MinigameType.Nails:
                 nailsMinigame.OnDeselect();
                 currentMinigame = MinigameType.None;
+                polishUI.SetActive(false);
+                nextTaskUI.SetActive(true);
+                tightenAndUI.SetActive(false);
+                InteractUI.SetActive(false);
                 break;
             case MinigameType.Zen:
+                polishUI.SetActive(false);
+                nextTaskUI.SetActive(false);
+                tightenAndUI.SetActive(false);
+                InteractUI.SetActive(false);
                 break;
             default:
                 break;
@@ -124,11 +150,16 @@ public class BombController : MonoBehaviour
                 buttonMinigame.ForceDeselect();
                 break;
         }
+        polishUI.SetActive(false);
+        nextTaskUI.SetActive(true);
+        tightenAndUI.SetActive(false);
+        InteractUI.SetActive(false);
         currentMinigame = MinigameType.None;
         CameraController.Instance.TransitionToMinigame(currentMinigame, null);
         _moveTween?.Kill();
         _moveTween = transform.DOMove(transitionOut, 2f).SetEase(Ease.Linear).OnComplete(() =>
         {
+            tempMinigame = MinigameType.None;
             if (CheckBombCompleted())
             {
                 BombSpawner.Instance.SpawnBomb();
@@ -155,12 +186,51 @@ public class BombController : MonoBehaviour
 
     public void Rage()
     {
-        MinigameType tempMinigame = currentMinigame;
+        tempMinigame = currentMinigame;
         currentMinigame = MinigameType.Zen;
+        polishUI.SetActive(false);
+        nextTaskUI.SetActive(false);
+        tightenAndUI.SetActive(false);
+        InteractUI.SetActive(false);
         CameraController.Instance.Rage();
         DOVirtual.DelayedCall(5f, () =>
         {
             currentMinigame = tempMinigame;
+            switch (currentMinigame)
+            {
+                case MinigameType.None:
+                    polishUI.SetActive(false);
+                    nextTaskUI.SetActive(true);
+                    tightenAndUI.SetActive(false);
+                    InteractUI.SetActive(false);
+                    break;
+                case MinigameType.Button:
+                    polishUI.SetActive(true);
+                    nextTaskUI.SetActive(true);
+                    tightenAndUI.SetActive(false);
+                    InteractUI.SetActive(true);
+                    break;
+                case MinigameType.Bolt:
+                    polishUI.SetActive(false);
+                    nextTaskUI.SetActive(true);
+                    tightenAndUI.SetActive(true);
+                    InteractUI.SetActive(false);
+                    break;
+                case MinigameType.Nails:
+                    polishUI.SetActive(false);
+                    nextTaskUI.SetActive(true);
+                    tightenAndUI.SetActive(false);
+                    InteractUI.SetActive(true);
+                    break;
+                case MinigameType.Zen:
+                    polishUI.SetActive(false);
+                    nextTaskUI.SetActive(false);
+                    tightenAndUI.SetActive(false);
+                    InteractUI.SetActive(false);
+                    break;
+                default:
+                    break;
+            }
             CameraController.Instance.TransitionToMinigame(currentMinigame, GetCurrentMinigame());
             Debug.Log("Back to previous minigame: " + currentMinigame);
         });

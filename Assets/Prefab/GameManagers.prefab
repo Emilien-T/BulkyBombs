@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7093334148758946047}
   - component: {fileID: 9024365797950700705}
   - component: {fileID: 2093317525492193609}
+  - component: {fileID: 1941004702671091127}
   m_Layer: 0
   m_Name: GameManagers
   m_TagString: Untagged
@@ -91,3 +92,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da8591ce16fbbaa4893670f1a244013d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameController
+--- !u!114 &1941004702671091127
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3540856329009174228}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1432e9f9bc693814c960d292cf8465de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AudioLibrary
+  Master: {fileID: 24300002, guid: 86c278800ad98fa46ac41eb90e2b4f16, type: 2}
+  SFX: {fileID: 24300002, guid: 86c278800ad98fa46ac41eb90e2b4f16, type: 2}
+  Music: {fileID: 24300002, guid: 86c278800ad98fa46ac41eb90e2b4f16, type: 2}
+  BombFactoryAmbienceClip: {fileID: 8300000, guid: 560a2c3e33fc85c4585249a1527d6b4a, type: 3}
+  ZenAmbienceClip: {fileID: 8300000, guid: 009b2f1c9eb4372498ea29dca53d6a25, type: 3}
+  BombComingInClip: {fileID: 8300000, guid: 9c9e7e2e5091fbf48a94b1701ccdbf69, type: 3}
+  BombGoingOutClip: {fileID: 8300000, guid: 978bea09b6930924b81e3a366b475e14, type: 3}
+  BoxClosingClip: {fileID: 8300000, guid: bfcb5628def4594418c7ed64620138e2, type: 3}
+  BoxScrapingClip: {fileID: 8300000, guid: 7b5067c84c2fb41478c2476820d56be3, type: 3}
+  CalmingDownClip: {fileID: 8300000, guid: d635513ffd27a6d4c90c2901d589da70, type: 3}
+  ConveyorClip: {fileID: 8300000, guid: 59643670e86ac0340ab325b0e1123bd7, type: 3}
+  GettingMadClip: {fileID: 8300000, guid: bea894c8d9f57234b97f913c63a878d3, type: 3}
+  HammeringClip: {fileID: 8300000, guid: 107b858930532894886b61d02c74c95d, type: 3}
+  LowTimeClip: {fileID: 8300000, guid: 698e6e659df9f3747ad4ce4e51551943, type: 3}
+  NuclearExplosionClip: {fileID: 8300000, guid: f48f39ce5be1a7f44850c3e424c7e52a, type: 3}
+  PolishClip: {fileID: 8300000, guid: 799dda102cefd6049836859f78600df5, type: 3}
+  SadTromboneClip: {fileID: 8300000, guid: 19155802683879d4a99286794604a45a, type: 3}
+  SweepToWorkClip: {fileID: 8300000, guid: e13dfe88d0b1db346a9b6cab766a96d3, type: 3}
+  SweepToZenClip: {fileID: 8300000, guid: 7e37381081537b04a86dbc2ed97a327d, type: 3}
+  TimerBeepClip: {fileID: 8300000, guid: 8dcac6a4dbbe00f45b0366683a412808, type: 3}
+  WhooshClip: {fileID: 8300000, guid: 3f4c0d5c22b3251448204a8ebd88b74a, type: 3}
+  WrenchClip: {fileID: 8300000, guid: 2d495071db6ef274fb2db5e06a2b651d, type: 3}
