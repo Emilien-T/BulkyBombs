@@ -13,6 +13,10 @@ public class BoltMinigame : Minigame
     private int boltIndex = 0;
     private bool moveBoltFlag = false;
     private BoltType[] bolts = new BoltType[3];
+    public void Start()
+    {
+        Wrench.SetActive(false);
+    }
     public void SetBolts(BoltType[] bolts)
     {
         this.bolts = bolts;
@@ -48,7 +52,11 @@ public class BoltMinigame : Minigame
 
     private void BoltControl(Vector2 move)
     {
-        if(move.x > 0.8f && !boltingState)
+        if(bombController.currentMinigame != MinigameType.Bolt) 
+        {
+            return;
+        }
+        if (move.x > 0.8f && !boltingState)
         {
             boltingState = true;
             if (boltList[boltIndex].Bolt())

@@ -1045,7 +1045,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6878b7ab4e9514478fa8c60ffb67cef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ConfirmButton
-  text: {fileID: 0}
+  text: {fileID: 6425706498089658770}
   image: {fileID: 0}
   letter: 65
 --- !u!1 &6147211115707310029
@@ -1451,6 +1451,7 @@ MonoBehaviour:
   - {fileID: 666018734324090659}
   currentLetterIndex: 0
   setup: 0
+  blackout: {fileID: 0}
 --- !u!1 &8225188017181229290
 GameObject:
   m_ObjectHideFlags: 0

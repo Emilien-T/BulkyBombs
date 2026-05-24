@@ -35,6 +35,6 @@ Material:
     m_Floats:
     - _BrushSize: 0.1
     m_Colors:
-    - _BrushUV: {r: 0.39887902, g: 0.6721392, b: 0, a: 0}
+    - _BrushUV: {r: 0.2006067, g: 0.341945, b: 0, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1

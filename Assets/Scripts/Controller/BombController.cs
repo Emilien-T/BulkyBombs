@@ -20,6 +20,7 @@ public class BombController : MonoBehaviour
     public GameObject tightenAndUI;
     public MinigameType currentMinigame = MinigameType.None;
     private int currentMinigameIndex = 0;
+    private bool transitioning = false;
 
     private MinigameType tempMinigame;
 
@@ -28,6 +29,7 @@ public class BombController : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        transitioning = false;
         buttonType = Random.Range(0, 4) switch
         {
             0 => ButtonType.Circle,
@@ -142,6 +144,8 @@ public class BombController : MonoBehaviour
 
     public void TransitionOut()
     {
+        if (transitioning) return;
+        transitioning = true;
         switch (currentMinigame) 
         {
             case MinigameType.Bolt:
