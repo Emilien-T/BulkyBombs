@@ -190,6 +190,7 @@ public class BombController : MonoBehaviour
     public void SendNukes()
     {
         EndScreen.SetLossReason(LossReason.LaunchNukes);
+        Debug.Log("Sending nukes...");
         SceneController.Instance.LoadScene("EndScreen");
     }
 

@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class BoltController : MonoBehaviour
 {
-    [SerializeField] private Color boltColor1;
-    [SerializeField] private Color boltColor2;
-    [SerializeField] private Color boltColor3;
+    [SerializeField] private Material boltMat1;
+    [SerializeField] private Material boltMat2;
+    [SerializeField] private Material boltMat3;
     private BoltType boltType;
     private int boltingTimes = 0;
     private bool isFocused = false;
@@ -26,16 +26,15 @@ public class BoltController : MonoBehaviour
         switch (boltType)
         {
             case BoltType.One:
-                renderer.materials[0].color = boltColor1;
+                renderer.material = boltMat1;
                 break;
             case BoltType.Two:
-                renderer.materials[0].color = boltColor2;
+                renderer.material = boltMat2;
                 break;
             case BoltType.Three:
-                renderer.materials[0].color = boltColor3;
+                renderer.material = boltMat3;
                 break;
             default:
-                renderer.materials[0].color = Color.white;
                 break;
         }
     }

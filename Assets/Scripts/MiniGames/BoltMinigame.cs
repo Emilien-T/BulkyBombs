@@ -7,6 +7,8 @@ public class BoltMinigame : Minigame
 {
     [SerializeField] private BombController bombController;
     [SerializeField] private List<BoltController> boltList;
+    [SerializeField] private GameObject Wrench;
+    [SerializeField] private List<Transform> WrenchPositions;
     private bool boltingState = false;
     private int boltIndex = 0;
     private bool moveBoltFlag = false;
@@ -30,6 +32,18 @@ public class BoltMinigame : Minigame
         boltingState = false;
         InputController.Instance.directionalControls += BoltControl;
         boltList[boltIndex].Focus();
+        Wrench.SetActive(true);
+    }
+
+    private void GoToWrenchPosition(int index)
+    {
+        if (index < 0 || index >= WrenchPositions.Count)
+        {
+            Debug.LogError("Invalid wrench position index: " + index);
+            return;
+        }
+        Wrench.transform.DOMove(WrenchPositions[index].position, 0.2f).SetEase(Ease.InOutQuad);
+        Wrench.transform.DORotateQuaternion(WrenchPositions[index].rotation, 0.2f).SetEase(Ease.InOutQuad);
     }
 
     private void BoltControl(Vector2 move)
@@ -45,8 +59,12 @@ public class BoltMinigame : Minigame
                 {
                     InputController.Instance.directionalControls += BoltControl;
                 });
-                }
-            bool tempCompleted = true;
+            }
+            else
+            {
+                Wrench.transform.DORotate(new Vector3(-30f, 0, 0f), 1f, RotateMode.LocalAxisAdd).SetEase(Ease.InOutQuad);
+            }
+                bool tempCompleted = true;
             for (int i = 0; i < boltList.Count; i++)
             {
                 tempCompleted &= boltList[i].IsBolted();
@@ -66,6 +84,10 @@ public class BoltMinigame : Minigame
         }
         else if (move.x < -0.8f)
         {
+            if (boltingState)
+            {
+                Wrench.transform.DORotate(new Vector3(30f, 0f, 0f), 1f, RotateMode.LocalAxisAdd).SetEase(Ease.InOutQuad);
+            }
             boltingState = false;
         }
         else if (move.y > 0.8f && !moveBoltFlag)
@@ -78,6 +100,7 @@ public class BoltMinigame : Minigame
                 boltIndex = bolts.Length - 1;
             }
             boltList[boltIndex].Focus();
+            GoToWrenchPosition(boltIndex);
         }
         else if (move.y < -0.8f && !moveBoltFlag)
         {
@@ -89,6 +112,7 @@ public class BoltMinigame : Minigame
                 boltIndex = 0;
             }
             boltList[boltIndex].Focus();
+            GoToWrenchPosition(boltIndex);
         }
         else if (Mathf.Abs(move.y) < 0.8f)
         {
@@ -100,6 +124,7 @@ public class BoltMinigame : Minigame
     {
         InputController.Instance.directionalControls -= BoltControl;
         boltList[boltIndex].UnFocus();
+        Wrench.SetActive(false);
     }
 
     private void OnDestroy()
