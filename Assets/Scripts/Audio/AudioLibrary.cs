@@ -60,28 +60,29 @@ public class AudioLibrary : Controller<AudioLibrary>
     // ===================== Music =====================
     protected override void MyAwake()
     {
+        float defaultMusicVolume = 0.2f;
         // Music
-        BombFactoryAmbienceData = new(BombFactoryAmbienceClip, true, false, Music, false, false);
-        ZenAmbienceData = new(ZenAmbienceClip, true, false, Music, false, false);
+        BombFactoryAmbienceData = new(BombFactoryAmbienceClip, true, false, Music, false, false, defaultMusicVolume);
+        ZenAmbienceData = new(ZenAmbienceClip, true, false, Music, false, false, defaultMusicVolume);
 
         // SFX
-        BombComingInData = new(BombComingInClip, false, false, SFX, false, false);
-        BombGoingOutData = new(BombGoingOutClip, false, false, SFX, false, false);
-        BoxClosingData = new(BoxClosingClip, false, false, SFX, false, false);
-        BoxScrapingData = new(BoxScrapingClip, false, false, SFX, false, false);
-        CalmingDownData = new(CalmingDownClip, false, false, SFX, false, false);
-        ConveyorData = new(ConveyorClip, false, false, SFX, false, false);
-        GettingMadData = new(GettingMadClip, false, false, SFX, false, false);
-        HammeringData = new(HammeringClip, false, false, SFX, false, false);
-        LowTimeData = new(LowTimeClip, false, false, SFX, false, false);
-        NuclearExplosionData = new(NuclearExplosionClip, false, false, SFX, false, false);
-        PolishData = new(PolishClip, true, false, SFX, false, false);
-        SadTromboneData = new(PolishClip, false, false, SFX, false, false);
-        SweepToWorkData = new(SweepToWorkClip, false, false, SFX, false, false);
-        SweepToZenData = new(SweepToZenClip, false, false, SFX, false, false);
-        TimerBeepData = new(TimerBeepClip, false, false, SFX, false, false);
-        WhooshData = new(WhooshClip, false, false, SFX, false, false);
-        WrenchData = new(WrenchClip, false, false, SFX, false, false);
+        BombComingInData = new(BombComingInClip, false, false, SFX, false, false, defaultMusicVolume);
+        BombGoingOutData = new(BombGoingOutClip, false, false, SFX, false, false, defaultMusicVolume);
+        BoxClosingData = new(BoxClosingClip, false, false, SFX, false, false, defaultMusicVolume);
+        BoxScrapingData = new(BoxScrapingClip, false, false, SFX, false, false, defaultMusicVolume);
+        CalmingDownData = new(CalmingDownClip, false, false, SFX, false, false, defaultMusicVolume);
+        ConveyorData = new(ConveyorClip, false, false, SFX, false, false, defaultMusicVolume);
+        GettingMadData = new(GettingMadClip, false, false, SFX, false, false, defaultMusicVolume);
+        HammeringData = new(HammeringClip, false, false, SFX, false, false, defaultMusicVolume);
+        LowTimeData = new(LowTimeClip, false, false, SFX, false, false, defaultMusicVolume);
+        NuclearExplosionData = new(NuclearExplosionClip, false, false, SFX, false, false, defaultMusicVolume);
+        PolishData = new(PolishClip, true, false, SFX, false, false, defaultMusicVolume);
+        SadTromboneData = new(PolishClip, false, false, SFX, false, false, defaultMusicVolume);
+        SweepToWorkData = new(SweepToWorkClip, false, false, SFX, false, false, defaultMusicVolume);
+        SweepToZenData = new(SweepToZenClip, false, false, SFX, false, false, defaultMusicVolume);
+        TimerBeepData = new(TimerBeepClip, false, false, SFX, false, false, defaultMusicVolume);
+        WhooshData = new(WhooshClip, false, false, SFX, false, false, defaultMusicVolume);
+        WrenchData = new(WrenchClip, false, false, SFX, false, false, defaultMusicVolume);
     }
 
     // ===================== Music =====================
