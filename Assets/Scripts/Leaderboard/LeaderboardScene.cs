@@ -32,7 +32,7 @@ public class LeaderboardScene : MonoBehaviour
         if (!setup) return;
         if (!val) return;
 
-        if (currentLetterIndex == letters.Count)
+        if (currentLetterIndex == letters.Count-1)
         {
             string name = "";
             foreach (Letter l in letters) 
@@ -70,7 +70,7 @@ public class LeaderboardScene : MonoBehaviour
         }
         else 
         {
-            if (dir.x > 0)
+            if (dir.y > 0)
             {
                 letters[currentLetterIndex].LetterUp();
             }
