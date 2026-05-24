@@ -45,7 +45,7 @@ public class InputController : Controller<InputController>
     private void MovePerformed(InputAction.CallbackContext ctx) 
     {
         Vector2 dir = ctx.ReadValue<Vector2>();
-        prevDirection = dir.normalized;
+        prevDirection = dir;
         if(DebugLog) Debug.Log("MovePerformed Dir: " + dir);
         directionalControls?.Invoke(prevDirection);
     }
