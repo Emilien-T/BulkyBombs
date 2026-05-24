@@ -72,11 +72,11 @@ public class BombController : MonoBehaviour
                 break;
         }
 
-        if (currentMinigame == MinigameType.Button && buttonMinigame.completed)
+        if (currentMinigame == MinigameType.Button && (buttonMinigame.completed || nailsMinigame.currentNailIndex != 0))
         {
             NextMiniGame();
         }
-        else if (currentMinigame == MinigameType.Bolt && boltMinigame.completed)
+        else if (currentMinigame == MinigameType.Bolt && (boltMinigame.completed || nailsMinigame.currentNailIndex != 0))
         {
             NextMiniGame();
         }
@@ -113,6 +113,17 @@ public class BombController : MonoBehaviour
 
     public void TransitionOut()
     {
+        switch (currentMinigame) 
+        {
+            case MinigameType.Bolt:
+                break;
+            case MinigameType.Nails:
+                nailsMinigame.ForceDeselect();
+                break;
+            case MinigameType.Button:
+                buttonMinigame.ForceDeselect();
+                break;
+        }
         currentMinigame = MinigameType.None;
         CameraController.Instance.TransitionToMinigame(currentMinigame, null);
         _moveTween?.Kill();
