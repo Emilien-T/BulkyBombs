@@ -24,7 +24,7 @@ public class Brush : MonoBehaviour
     public Animator animator;
 
     public bool polishing = false;
-    private SoundBuilder polishingSound;
+    public SoundBuilder polishingSound;
     private MeshRenderer meshRenderer;
     void Start()
     {

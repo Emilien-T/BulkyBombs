@@ -8,9 +8,7 @@ public class EndScreen : MonoBehaviour
 {
     [SerializeField] private Sprite launchNukesSprite;
     [SerializeField] private Sprite badNukesSprite;
-    [SerializeField] private GameObject allowContinueUI;
     public LeaderboardScene ldboardnameinput;
-    private bool allowContinuing = false;
 
     private static LossReason reason;
 
@@ -20,13 +18,6 @@ public class EndScreen : MonoBehaviour
         
     }
 
-    private void Continue(bool action)
-    {
-        if (allowContinuing)
-        {
-            SceneController.Instance.LoadScene("MainMenu");
-        }
-    }
 
     private void OnEnable()
     {
@@ -42,11 +33,7 @@ public class EndScreen : MonoBehaviour
             default:
                 break;
         }
-        allowContinuing = false;
-        allowContinueUI.SetActive(false);
         DOVirtual.DelayedCall(3f, () => {
-            allowContinuing = true;
-            allowContinueUI.SetActive(true);
             ldboardnameinput?.Setup();
         });
     }

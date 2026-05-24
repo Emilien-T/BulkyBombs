@@ -81,12 +81,14 @@ public class ButtonMinigame : Minigame
     public override void WinGame()
     {
         Debug.Log("Yay");
+        brush.polishingSound?.Stop();
         completed = true;
         bombController.NextMiniGame();
     }
 
     public override void LoseGame()
     {
+        brush.polishingSound?.Stop();
         brush.animator.SetTrigger("Down");
         lost = true;
         bombController.SendNukes();
