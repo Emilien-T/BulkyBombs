@@ -63,11 +63,15 @@ public class ButtonMinigame : Minigame
     }
     public override void OnSelect()
     {
+        CameraController.Instance.rightHandTransform.gameObject.SetActive(false);
+        CameraController.Instance.leftHandTransform.gameObject.SetActive(false);
         brush.animator.SetTrigger("Up");
     }
 
     public override void OnDeselect()
     {
+        CameraController.Instance.rightHandTransform.gameObject.SetActive(true);
+        CameraController.Instance.leftHandTransform.gameObject.SetActive(true);
         brush.animator.SetTrigger("Down");
     }
     public override void ForceDeselect()
