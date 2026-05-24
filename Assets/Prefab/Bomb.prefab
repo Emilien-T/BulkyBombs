@@ -1485,16 +1485,12 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2818935010737068787, guid: d0896450cc0ba94459e5791a04638df9, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 1165
-      objectReference: {fileID: 0}
-    - target: {fileID: 2818935010737068787, guid: d0896450cc0ba94459e5791a04638df9, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 5876748761419879974, guid: d0896450cc0ba94459e5791a04638df9, type: 3}
       propertyPath: uiMovingNailHammerMoveDist.x
-      value: -200
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7528313490074520703, guid: d0896450cc0ba94459e5791a04638df9, type: 3}
       propertyPath: m_Pivot.x
@@ -2155,16 +2151,12 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2818935010737068787, guid: d0896450cc0ba94459e5791a04638df9, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 765
-      objectReference: {fileID: 0}
-    - target: {fileID: 2818935010737068787, guid: d0896450cc0ba94459e5791a04638df9, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 5876748761419879974, guid: d0896450cc0ba94459e5791a04638df9, type: 3}
       propertyPath: uiMovingNailHammerMoveDist.x
-      value: 200
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7528313490074520703, guid: d0896450cc0ba94459e5791a04638df9, type: 3}
       propertyPath: m_Pivot.x
@@ -3070,10 +3062,6 @@ PrefabInstance:
     - target: {fileID: 479481196234440890, guid: d0896450cc0ba94459e5791a04638df9, type: 3}
       propertyPath: m_IsActive
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2818935010737068787, guid: d0896450cc0ba94459e5791a04638df9, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 1165
       objectReference: {fileID: 0}
     - target: {fileID: 2818935010737068787, guid: d0896450cc0ba94459e5791a04638df9, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -5437,16 +5425,12 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2818935010737068787, guid: d0896450cc0ba94459e5791a04638df9, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 1165
-      objectReference: {fileID: 0}
-    - target: {fileID: 2818935010737068787, guid: d0896450cc0ba94459e5791a04638df9, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5876748761419879974, guid: d0896450cc0ba94459e5791a04638df9, type: 3}
       propertyPath: uiMovingNailHammerMoveDist.x
-      value: -200
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7528313490074520703, guid: d0896450cc0ba94459e5791a04638df9, type: 3}
       propertyPath: m_Pivot.x

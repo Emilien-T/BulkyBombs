@@ -162,6 +162,7 @@ MonoBehaviour:
   rightHandAnimator: {fileID: 8251678672177832974}
   leftHandTransform: {fileID: 2314698197297058325}
   rightHandTransform: {fileID: 9104707727771517831}
+  rageMat: {fileID: 2100000, guid: 2eddc5b086897477f8dbeb4c14915084, type: 2}
 --- !u!1001 &2852411074125084158
 PrefabInstance:
   m_ObjectHideFlags: 0

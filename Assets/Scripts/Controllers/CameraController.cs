@@ -1,6 +1,7 @@
 using AudioSystem;
 using DG.Tweening;
 using UnityEngine;
+using static UnityEngine.Rendering.DebugUI;
 
 public class CameraController : Controller<CameraController>
 {
@@ -14,8 +15,13 @@ public class CameraController : Controller<CameraController>
     [SerializeField] private Animator rightHandAnimator;
     [SerializeField] public Transform leftHandTransform;
     [SerializeField] public Transform rightHandTransform;
+    public Material rageMat;
     private SoundBuilder sweepSound;
+    protected override void MyAwake() 
+    {
 
+        rageMat.SetFloat("_vignette_power", 10);
+    }
     public void TransitionToMinigame(Enums.MinigameType minigameType, Minigame minigame)
     {
         sweepSound?.Stop();
@@ -50,8 +56,22 @@ public class CameraController : Controller<CameraController>
         leftHandAnimator.speed = 1.5f;
         rightHandAnimator.SetTrigger("Zen");
         leftHandAnimator.SetTrigger("Zen");
+        // 7 -> 3 during delay before zen
+        DOVirtual.Float(10f, 3f, 1f, value =>
+        {
+            rageMat.SetFloat("_vignette_power", value);
+        });
+
         GoToZen(1f);
         GoToBase(4.8f);
+
+        // 3 -> 7 ending at end of rage
+        DOVirtual.Float(3f, 10f, 4f, value =>
+        {
+            rageMat.SetFloat("_vignette_power", value);
+        })
+        .SetDelay(1f);
+
         rightHandTransform.DOShakePosition(4f, strength: 0.1f, vibrato: 20, randomness: 0).SetEase(Ease.OutQuad);
         leftHandTransform.DOShakePosition(4f, strength: 0.1f, vibrato: 20, randomness: 0).SetEase(Ease.OutQuad);
         DOVirtual.DelayedCall(5f, () =>

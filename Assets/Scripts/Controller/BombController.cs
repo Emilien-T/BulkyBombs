@@ -115,6 +115,7 @@ public class BombController : MonoBehaviour
         }
         else 
         {
+            Debug.Log(CameraController.Instance);
             CameraController.Instance.TransitionToMinigame(currentMinigame, chosenMinigame);
         }
     }

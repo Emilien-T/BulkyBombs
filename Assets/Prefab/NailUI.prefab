@@ -87,7 +87,7 @@ MonoBehaviour:
   uiMovingNail: {fileID: 5349115287995293908}
   BackgroundUI: {fileID: 6450517048851565881}
   uiMovingNailMoveDist: {x: 0, y: 430}
-  uiMovingNailHammerMoveDist: {x: -200, y: 0}
+  uiMovingNailHammerMoveDist: {x: 0, y: 0}
   redHammer: {fileID: 1398686950, guid: af1595c47bc141d46b71d5913998736b, type: 3}
   whiteHammer: {fileID: -1337397372, guid: 134f4270cc12c9842b9623d54a4149ef, type: 3}
 --- !u!1 &5349115287995293908
@@ -124,7 +124,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 749, y: 427}
+  m_AnchoredPosition: {x: 966, y: 427}
   m_SizeDelta: {x: 188, y: 52}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7119003486921281529

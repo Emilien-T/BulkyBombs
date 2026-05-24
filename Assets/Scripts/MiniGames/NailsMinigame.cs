@@ -61,6 +61,8 @@ public class NailsMinigame : Minigame
         }
         timerCoroutine = StartCoroutine(timerRoutine());
         nails[currentNailIndex].StartNail();
+        nails[currentNailIndex].gameObject.SetActive(true);
+        Debug.Log("Close");
         lidAnimator.SetTrigger("Close");
         AudioLibrary.Instance.BoxClosing();
         // disable hand cuz we want our own
@@ -71,6 +73,7 @@ public class NailsMinigame : Minigame
         // reenable hand cuz we want our own
         CameraController.Instance.rightHandTransform.gameObject.SetActive(true);
         nails[currentNailIndex].CancelNail();
+        nails[currentNailIndex].gameObject.SetActive(false);
         if (timerCoroutine != null)
         {
             StopCoroutine(timerCoroutine);
@@ -81,11 +84,11 @@ public class NailsMinigame : Minigame
             StopCoroutine(nailingCoroutine);
             nailingCoroutine = null;
         }
-        if (currentNailIndex == 0 && !raging) 
+        if (currentNailIndex == 0) 
         {
-
             lidAnimator.SetTrigger("Open");
         }
+        raging = false;
     }
     public override void ForceDeselect() 
     {
