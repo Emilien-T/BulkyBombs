@@ -90,6 +90,17 @@ public class BombController : MonoBehaviour
         }
     }
 
+    private Minigame GetCurrentMinigame()
+    {
+        return currentMinigame switch
+        {
+            MinigameType.Button => buttonMinigame,
+            MinigameType.Bolt => boltMinigame,
+            MinigameType.Nails => nailsMinigame,
+            _ => null
+        };
+    }
+
     private void StartConveyor()
     {
         _moveTween?.Kill();
@@ -133,6 +144,15 @@ public class BombController : MonoBehaviour
 
     public void Rage()
     {
+        MinigameType tempMinigame = currentMinigame;
+        currentMinigame = MinigameType.Zen;
+        CameraController.Instance.Rage();
+        DOVirtual.DelayedCall(5f, () =>
+        {
+            currentMinigame = tempMinigame;
+            CameraController.Instance.TransitionToMinigame(currentMinigame, GetCurrentMinigame());
+            Debug.Log("Back to previous minigame: " + currentMinigame);
+        });
         Debug.Log("Rage!!!!!!!!!!!");
     }
 

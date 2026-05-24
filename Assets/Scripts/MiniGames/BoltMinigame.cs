@@ -1,3 +1,4 @@
+using DG.Tweening;
 using Enums;
 using System.Collections.Generic;
 using UnityEngine;
@@ -38,8 +39,13 @@ public class BoltMinigame : Minigame
             boltingState = true;
             if (boltList[boltIndex].Bolt())
             {
+                InputController.Instance.directionalControls -= BoltControl;
                 bombController.Rage();
-            }
+                DOVirtual.DelayedCall(5f, () =>
+                {
+                    InputController.Instance.directionalControls += BoltControl;
+                });
+                }
             bool tempCompleted = true;
             for (int i = 0; i < boltList.Count; i++)
             {
