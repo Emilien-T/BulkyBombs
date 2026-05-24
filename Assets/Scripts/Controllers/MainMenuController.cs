@@ -48,6 +48,7 @@ public class MainMenuController : Controller<MainMenuController>
     }
     private void OnButtonDown(bool isDown) 
     {
+        if (!isDown) return;
         StartGame();
     }
     private void SelectButton() 
