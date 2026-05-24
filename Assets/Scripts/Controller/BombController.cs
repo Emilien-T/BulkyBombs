@@ -166,12 +166,14 @@ public class BombController : MonoBehaviour
             tempMinigame = MinigameType.None;
             if (CheckBombCompleted())
             {
+                BombSpawner.Instance.score++;
                 BombSpawner.Instance.SpawnBomb();
                 Destroy(gameObject);
             }
             else
             {
                 EndScreen.SetLossReason(LossReason.BadNukes);
+                GameController.Instance.score = BombSpawner.Instance.score;
                 SceneController.Instance.LoadScene("EndScreen");
             }
         });

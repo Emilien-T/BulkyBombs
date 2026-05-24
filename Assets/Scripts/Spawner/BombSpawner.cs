@@ -5,6 +5,7 @@ public class BombSpawner : Controller<BombSpawner>
 {
     [SerializeField] private GameObject bombPrefab;
     private BombController currentBomb;
+    public int score;
 
     private void Start()
     {

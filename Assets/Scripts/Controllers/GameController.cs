@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class GameController : Controller<GameController>
 {
+    public int score;
     protected override void MyAwake()
     {
         LeaderboardService.LoadLeaderboard();
@@ -15,6 +16,7 @@ public class GameController : Controller<GameController>
 
     private void NextTask(bool startingPress)
     {
+        if (BombSpawner.Instance == null) return;
         if (startingPress)
         {
             if(BombSpawner.Instance.GetCurrentBomb() == null || !BombSpawner.Instance.GetCurrentBomb().IsActiveBomb())
