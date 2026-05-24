@@ -1019,11 +1019,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2818935010737068787, guid: d0896450cc0ba94459e5791a04638df9, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -150
+      value: 1165
+      objectReference: {fileID: 0}
+    - target: {fileID: 2818935010737068787, guid: d0896450cc0ba94459e5791a04638df9, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 5876748761419879974, guid: d0896450cc0ba94459e5791a04638df9, type: 3}
       propertyPath: uiMovingNailHammerMoveDist.x
-      value: -150
+      value: -200
       objectReference: {fileID: 0}
     - target: {fileID: 7528313490074520703, guid: d0896450cc0ba94459e5791a04638df9, type: 3}
       propertyPath: m_Pivot.x
@@ -1087,11 +1091,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7528313490074520703, guid: d0896450cc0ba94459e5791a04638df9, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -699
+      value: -2084
       objectReference: {fileID: 0}
     - target: {fileID: 7528313490074520703, guid: d0896450cc0ba94459e5791a04638df9, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 156
+      value: -232.00002
       objectReference: {fileID: 0}
     - target: {fileID: 7528313490074520703, guid: d0896450cc0ba94459e5791a04638df9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1657,6 +1661,18 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2818935010737068787, guid: d0896450cc0ba94459e5791a04638df9, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 765
+      objectReference: {fileID: 0}
+    - target: {fileID: 2818935010737068787, guid: d0896450cc0ba94459e5791a04638df9, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 5876748761419879974, guid: d0896450cc0ba94459e5791a04638df9, type: 3}
+      propertyPath: uiMovingNailHammerMoveDist.x
+      value: 200
+      objectReference: {fileID: 0}
     - target: {fileID: 7528313490074520703, guid: d0896450cc0ba94459e5791a04638df9, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1719,11 +1735,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7528313490074520703, guid: d0896450cc0ba94459e5791a04638df9, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 645
+      value: -651
       objectReference: {fileID: 0}
     - target: {fileID: 7528313490074520703, guid: d0896450cc0ba94459e5791a04638df9, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 407
+      value: 19
       objectReference: {fileID: 0}
     - target: {fileID: 7528313490074520703, guid: d0896450cc0ba94459e5791a04638df9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -2474,11 +2490,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2818935010737068787, guid: d0896450cc0ba94459e5791a04638df9, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -150
+      value: 1165
       objectReference: {fileID: 0}
-    - target: {fileID: 5876748761419879974, guid: d0896450cc0ba94459e5791a04638df9, type: 3}
-      propertyPath: uiMovingNailHammerMoveDist.x
-      value: -150
+    - target: {fileID: 2818935010737068787, guid: d0896450cc0ba94459e5791a04638df9, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 7528313490074520703, guid: d0896450cc0ba94459e5791a04638df9, type: 3}
       propertyPath: m_Pivot.x
@@ -2542,11 +2558,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7528313490074520703, guid: d0896450cc0ba94459e5791a04638df9, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 35
+      value: -1281
       objectReference: {fileID: 0}
     - target: {fileID: 7528313490074520703, guid: d0896450cc0ba94459e5791a04638df9, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 407
+      value: 18.99998
       objectReference: {fileID: 0}
     - target: {fileID: 7528313490074520703, guid: d0896450cc0ba94459e5791a04638df9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -4799,6 +4815,7 @@ MonoBehaviour:
   - {fileID: 7248475249017463927}
   - {fileID: 1688560233133241445}
   - {fileID: 7978179506233080727}
+  currentNailIndex: 0
   successNailTime: 0.35
   failNailTime: 0.6
   timerPaused: 0
@@ -4826,11 +4843,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2818935010737068787, guid: d0896450cc0ba94459e5791a04638df9, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -450
+      value: 1165
+      objectReference: {fileID: 0}
+    - target: {fileID: 2818935010737068787, guid: d0896450cc0ba94459e5791a04638df9, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5876748761419879974, guid: d0896450cc0ba94459e5791a04638df9, type: 3}
       propertyPath: uiMovingNailHammerMoveDist.x
-      value: 150
+      value: -200
       objectReference: {fileID: 0}
     - target: {fileID: 7528313490074520703, guid: d0896450cc0ba94459e5791a04638df9, type: 3}
       propertyPath: m_Pivot.x
@@ -4894,11 +4915,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7528313490074520703, guid: d0896450cc0ba94459e5791a04638df9, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 1260
+      value: -4
       objectReference: {fileID: 0}
     - target: {fileID: 7528313490074520703, guid: d0896450cc0ba94459e5791a04638df9, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 100
+      value: -288.00003
       objectReference: {fileID: 0}
     - target: {fileID: 7528313490074520703, guid: d0896450cc0ba94459e5791a04638df9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

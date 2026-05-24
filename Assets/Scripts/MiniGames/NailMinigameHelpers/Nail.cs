@@ -30,9 +30,7 @@ public class Nail : MonoBehaviour
     }
     public void CancelNail()
     {
-        gameObject.SetActive(false);
         firstNail.SetActive(false);
-        bentNail.SetActive(false);
         nailingUI.gameObject.SetActive(false);
         nailingUI.Disable();
     }

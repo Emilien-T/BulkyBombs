@@ -1,6 +1,6 @@
 using System.Collections;
 using UnityEngine;
-using static UnityEngine.Audio.GeneratorInstance;
+using UnityEngine.UI;
 
 public class NailHammerUI : MonoBehaviour 
 {
@@ -10,10 +10,13 @@ public class NailHammerUI : MonoBehaviour
     public GameObject BackgroundUI;
     public Vector2 uiMovingNailMoveDist;
     public Vector2 uiMovingNailHammerMoveDist;
+    public Sprite redHammer;
+    public Sprite whiteHammer;
 
     private Vector2 uiMovingNailStartPos;
     private Vector2 uiMovingNailEndPos;
     private RectTransform uiMovingNailRT;
+    private Image uiMovingNailImage; 
     private bool isEnabled;
     private Coroutine displayTimerCoroutine;
     private bool timerStopped;
@@ -26,6 +29,8 @@ public class NailHammerUI : MonoBehaviour
 
         if (initialized) return;
         initialized = true;
+        uiMovingNailImage = uiMovingNail.GetComponent<Image>();
+        uiMovingNailImage.sprite = whiteHammer;
         uiMovingNailRT = uiMovingNail.GetComponent<RectTransform>();
         uiMovingNailStartPos = uiMovingNailRT.anchoredPosition;
         uiMovingNailEndPos = uiMovingNailStartPos + uiMovingNailMoveDist;
@@ -33,6 +38,7 @@ public class NailHammerUI : MonoBehaviour
     public void Hammer() 
     {
         timerStopped = true;
+        uiMovingNailImage.sprite = redHammer;
         uiMovingNailRT.anchoredPosition += uiMovingNailHammerMoveDist;
     }
     private IEnumerator timerRoutine() 
@@ -52,6 +58,7 @@ public class NailHammerUI : MonoBehaviour
         BackgroundUI.SetActive(true);
         isEnabled = true;
         timerStopped = false;
+        uiMovingNailImage.sprite = whiteHammer;
         if (displayTimerCoroutine != null) 
         {
             StopCoroutine(displayTimerCoroutine);

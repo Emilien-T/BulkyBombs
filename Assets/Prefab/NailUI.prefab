@@ -86,8 +86,10 @@ MonoBehaviour:
   minigameManager: {fileID: 0}
   uiMovingNail: {fileID: 5349115287995293908}
   BackgroundUI: {fileID: 6450517048851565881}
-  uiMovingNailMoveDist: {x: 0, y: 500}
-  uiMovingNailHammerMoveDist: {x: 150, y: 0}
+  uiMovingNailMoveDist: {x: 0, y: 430}
+  uiMovingNailHammerMoveDist: {x: -200, y: 0}
+  redHammer: {fileID: 1398686950, guid: af1595c47bc141d46b71d5913998736b, type: 3}
+  whiteHammer: {fileID: -1337397372, guid: 134f4270cc12c9842b9623d54a4149ef, type: 3}
 --- !u!1 &5349115287995293908
 GameObject:
   m_ObjectHideFlags: 0
@@ -115,15 +117,15 @@ RectTransform:
   m_GameObject: {fileID: 5349115287995293908}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 0.2, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7528313490074520703}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -450, y: -250}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: 749, y: 427}
+  m_SizeDelta: {x: 188, y: 52}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7119003486921281529
 CanvasRenderer:
@@ -146,14 +148,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.26415092, g: 0.26415092, b: 0.26415092, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: -1337397372, guid: 134f4270cc12c9842b9623d54a4149ef, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -188,18 +190,18 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6450517048851565881}
-  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 5, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3382489000479390596}
   m_Father: {fileID: 7528313490074520703}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -300, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: 963, y: 265}
+  m_SizeDelta: {x: 213, y: 514}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4118080751197192519
 CanvasRenderer:
@@ -229,7 +231,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 640375795, guid: 272f029cd6af28c49b0ee22f3d2010c4, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -266,15 +268,15 @@ RectTransform:
   m_GameObject: {fileID: 8026671390912590344}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.2, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4680425487269695280}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 20, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: 3, y: 57.4}
+  m_SizeDelta: {x: 196, y: 86}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7975035454948002129
 CanvasRenderer:
@@ -297,14 +299,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.301515, g: 1, b: 0.2971698, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 1738949792, guid: fe77729257a4f7c4bad1a402bb762654, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

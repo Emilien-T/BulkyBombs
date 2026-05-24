@@ -18,6 +18,7 @@ public class NailsMinigame : Minigame
     public float failNailTime;
     public bool timerPaused;
     public Animator lidAnimator;
+    private bool raging = false;
     private void Start()
     {
         InputController.Instance.button1 += Hammer;
@@ -51,6 +52,7 @@ public class NailsMinigame : Minigame
     }
     public override void OnSelect()
     {
+        raging = false;
         timer = 0;
         if (timerCoroutine != null) 
         {
@@ -78,7 +80,7 @@ public class NailsMinigame : Minigame
             StopCoroutine(nailingCoroutine);
             nailingCoroutine = null;
         }
-        if (currentNailIndex == 0) 
+        if (currentNailIndex == 0 && !raging) 
         {
 
             lidAnimator.SetTrigger("Open");
@@ -133,6 +135,7 @@ public class NailsMinigame : Minigame
     }
     public override void LoseGame()
     {
+        raging = true;
         ForceDeselect();
         bombController.Rage();
     }
