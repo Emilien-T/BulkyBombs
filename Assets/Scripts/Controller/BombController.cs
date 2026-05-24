@@ -195,7 +195,7 @@ public class BombController : MonoBehaviour
         tightenAndUI.SetActive(false);
         InteractUI.SetActive(false);
         CameraController.Instance.Rage();
-        AudioLibrary.Instance.GettingMad();
+        //AudioLibrary.Instance.GettingMad();
         DOVirtual.DelayedCall(5f, () =>
         {
             currentMinigame = tempMinigame;
@@ -235,6 +235,7 @@ public class BombController : MonoBehaviour
                     break;
             }
             AudioLibrary.Instance.CalmingDown();
+            AudioLibrary.Instance.StartBombFactoryAmbience();
             CameraController.Instance.TransitionToMinigame(currentMinigame, GetCurrentMinigame());
             Debug.Log("Back to previous minigame: " + currentMinigame);
         });

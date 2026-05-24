@@ -66,10 +66,15 @@ public class CameraController : Controller<CameraController>
         transform.DOShakePosition(0.2f, strength: 0.1f, vibrato: 40, randomness: 0).SetEase(Ease.OutQuad);
     }
 
-    private void Transition(Transform target, Minigame targetMinigame, float startDelay = 0f)
+    private void Transition(Transform target, Minigame targetMinigame, float startDelay = 0f, bool zenAmbience = false)
     {
         Sequence seq = DOTween.Sequence();
         seq.AppendInterval(startDelay);
+        if(zenAmbience)
+            seq.AppendCallback(() =>
+                {
+                    AudioLibrary.Instance.StartZenAmbience();
+                });
         seq.Append(transform.DOMove(target.position, transitionTime).SetEase(Ease.InOutQuad));
         seq.Join(transform.DORotate(target.rotation.eulerAngles, transitionTime).SetEase(Ease.InOutQuad));
         if(targetMinigame != null) targetMinigame.OnSelect();
@@ -77,7 +82,7 @@ public class CameraController : Controller<CameraController>
 
     public void GoToZen(float startDelay = 0f)
     {
-        Transition(zenTransform, null, startDelay);
+        Transition(zenTransform, null, startDelay, true);
     }
 
     public void GoToBase(float startDelay = 0f)
