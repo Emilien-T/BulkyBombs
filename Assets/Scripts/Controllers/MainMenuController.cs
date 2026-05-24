@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class MainMenuController : Controller<MainMenuController>
 {
@@ -11,15 +12,21 @@ public class MainMenuController : Controller<MainMenuController>
     private int selectionIndex = 0;
     private MenuUI currentSelectedUI;
     private bool selectionChangeable = true;
+    public List<TMP_Text> leaderboards = new();
 
     private void Start()
     {
         InputController.Instance.directionalControls += OnDirectionChanged;
         InputController.Instance.buttonAny += OnButtonDown;
-        selectionIndex = 1;
-        currentSelectedUI = StartButton;
-        menuButtons = new List<MenuButton> { QuitButton, StartButton };
-        currentSelectedUI.OnSelected();
+        int i = 0;
+        foreach (TMP_Text t in leaderboards) 
+        {
+            if (LeaderboardService.leaderboardAsList.Count > i) 
+            {
+                t.text = LeaderboardService.leaderboardAsList[i].name + " : " + LeaderboardService.leaderboardAsList[i].score;
+            }
+            i++;
+        }
     }
 
     public void StartGame() 
@@ -37,62 +44,11 @@ public class MainMenuController : Controller<MainMenuController>
     // Dealing with input
     private void OnDirectionChanged(Vector2 dir) 
     {
-        if (!selectionChangeable) return;
-
-        if (currentSelectedUI == VolumeSlider)
-        {
-            if (dir.x > Mathf.Abs(dir.y) && dir.x > 0.5f)
-            {
-                // switch to one of the buttons
-                SelectButton();
-            }
-            else
-            {
-                VolumeSlider.SlideChanged(dir);
-            }
-            return;
-        }
-        if (dir.x < -Mathf.Abs(dir.y) && dir.x < -0.5f) 
-        {
-            currentSelectedUI.OnDeselected();
-            currentSelectedUI = VolumeSlider;
-            currentSelectedUI.OnSelected();
-            return;
-        }
-
-        int prevSelectionIndex = selectionIndex;
-        if (dir.y > 0.5f)
-        {
-            selectionIndex = Mathf.Clamp(selectionIndex + 1, 0, menuButtons.Count - 1);
-        }
-        else if (dir.y < -0.5f)
-        {
-            selectionIndex = Mathf.Clamp(selectionIndex - 1, 0, menuButtons.Count - 1);
-        }
-
-        if (prevSelectionIndex != selectionIndex)
-        {
-            SelectButton();
-        }
+        
     }
     private void OnButtonDown(bool isDown) 
     {
-        if (!isDown) return;
-        if (currentSelectedUI == VolumeSlider)
-        {
-            return;
-        }
-
-        menuButtons[selectionIndex].OnClick();
-        switch (selectionIndex)
-        {
-            case 0:
-                QuitGame();
-                break;
-            case 1:
-                StartGame();
-                break;
-        }
+        StartGame();
     }
     private void SelectButton() 
     {
