@@ -1,3 +1,4 @@
+using AudioSystem;
 using DG.Tweening;
 using Enums;
 using System.Collections.Generic;
@@ -129,11 +130,13 @@ public class BombController : MonoBehaviour
 
     private void StartConveyor()
     {
+        SoundBuilder conveyor = AudioLibrary.Instance.Conveyor();
         _moveTween?.Kill();
         _moveTween = transform.DOMove(workPosition, 2f).SetEase(Ease.Linear).OnComplete(()=>
         {
             TimerController.Instance.StartTimer(bombTimer, this);
             activeBomb = true;
+            conveyor.Stop();
         });
     }
 
@@ -157,6 +160,7 @@ public class BombController : MonoBehaviour
         currentMinigame = MinigameType.None;
         CameraController.Instance.TransitionToMinigame(currentMinigame, null);
         _moveTween?.Kill();
+        AudioLibrary.Instance.BombGoingOut();
         _moveTween = transform.DOMove(transitionOut, 2f).SetEase(Ease.Linear).OnComplete(() =>
         {
             tempMinigame = MinigameType.None;
@@ -198,6 +202,7 @@ public class BombController : MonoBehaviour
         tightenAndUI.SetActive(false);
         InteractUI.SetActive(false);
         CameraController.Instance.Rage();
+        //AudioLibrary.Instance.GettingMad();
         DOVirtual.DelayedCall(5f, () =>
         {
             currentMinigame = tempMinigame;
@@ -236,6 +241,8 @@ public class BombController : MonoBehaviour
                 default:
                     break;
             }
+            AudioLibrary.Instance.CalmingDown();
+            AudioLibrary.Instance.StartBombFactoryAmbience();
             CameraController.Instance.TransitionToMinigame(currentMinigame, GetCurrentMinigame());
             Debug.Log("Back to previous minigame: " + currentMinigame);
         });
@@ -247,7 +254,9 @@ public class BombController : MonoBehaviour
     {
         if (activeBomb)
         {
-            bombTimer -= Time.deltaTime;
+            if (bombTimer < 6 && bombTimer % 1 - Time.deltaTime < 0 && currentMinigame != MinigameType.Zen) AudioLibrary.Instance.LowTime();
+            else if (bombTimer > 6 && bombTimer % 1 - Time.deltaTime < 0 && currentMinigame != MinigameType.Zen) AudioLibrary.Instance.TimerBeep();
+                bombTimer -= Time.deltaTime;
             if (bombTimer <= 0)
             {
                 activeBomb = false;

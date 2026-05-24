@@ -11,6 +11,7 @@ public class GameController : Controller<GameController>
     private void Start()
     {
         InputController.Instance.button0 += NextTask;
+        AudioLibrary.Instance.StartBombFactoryAmbience();
     }
 
     private void NextTask(bool startingPress)

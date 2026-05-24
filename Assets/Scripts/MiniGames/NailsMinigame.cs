@@ -62,6 +62,7 @@ public class NailsMinigame : Minigame
         timerCoroutine = StartCoroutine(timerRoutine());
         nails[currentNailIndex].StartNail();
         lidAnimator.SetTrigger("Close");
+        AudioLibrary.Instance.BoxClosing();
         // disable hand cuz we want our own
         CameraController.Instance.rightHandTransform.gameObject.SetActive(false);
     }

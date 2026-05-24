@@ -75,7 +75,7 @@ public class AudioLibrary : Controller<AudioLibrary>
         HammeringData = new(HammeringClip, false, false, SFX, false, false);
         LowTimeData = new(LowTimeClip, false, false, SFX, false, false);
         NuclearExplosionData = new(NuclearExplosionClip, false, false, SFX, false, false);
-        PolishData = new(PolishClip, false, false, SFX, false, false);
+        PolishData = new(PolishClip, true, false, SFX, false, false);
         SadTromboneData = new(PolishClip, false, false, SFX, false, false);
         SweepToWorkData = new(SweepToWorkClip, false, false, SFX, false, false);
         SweepToZenData = new(SweepToZenClip, false, false, SFX, false, false);

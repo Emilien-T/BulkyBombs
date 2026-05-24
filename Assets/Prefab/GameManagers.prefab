@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 9024365797950700705}
   - component: {fileID: 2093317525492193609}
   - component: {fileID: 1941004702671091127}
+  - component: {fileID: 4016089198064359925}
   m_Layer: 0
   m_Name: GameManagers
   m_TagString: Untagged
@@ -126,3 +127,22 @@ MonoBehaviour:
   TimerBeepClip: {fileID: 8300000, guid: 8dcac6a4dbbe00f45b0366683a412808, type: 3}
   WhooshClip: {fileID: 8300000, guid: 3f4c0d5c22b3251448204a8ebd88b74a, type: 3}
   WrenchClip: {fileID: 8300000, guid: 2d495071db6ef274fb2db5e06a2b651d, type: 3}
+--- !u!114 &4016089198064359925
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3540856329009174228}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d4729391a38b534d86863c351eee882, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AudioSystem.SoundManager
+  activeEmitters: []
+  mixer: {fileID: 24100000, guid: 86c278800ad98fa46ac41eb90e2b4f16, type: 2}
+  emitterPrefab: {fileID: 1277389134863784608, guid: 3e6afff997cda12428e9f912e36777cb, type: 3}
+  collectionCheck: 1
+  defaultCapacity: 10
+  maxPoolSize: 100
+  frequentEmitterMax: 15

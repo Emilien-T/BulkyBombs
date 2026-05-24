@@ -1,3 +1,4 @@
+using AudioSystem;
 using Enums;
 using System;
 using System.Collections;
@@ -21,6 +22,9 @@ public class Brush : MonoBehaviour
     private Vector2 moveDir;
     private Coroutine buttonPressCo;
     public Animator animator;
+
+    public bool polishing = false;
+    private SoundBuilder polishingSound;
     void Start()
     {
         InputController.Instance.button1 += OnButtonDown;
@@ -40,10 +44,14 @@ public class Brush : MonoBehaviour
         if (!isBuffing) 
         {
             animator.SetTrigger("Idle");
+            polishing = true;
+            polishingSound = AudioLibrary.Instance.Polish();
         }
         else
         {
             animator.SetTrigger("Bob");
+            if (polishing == true) polishingSound?.Stop();
+            polishing = false;
         }
             isBuffing = isDown;
     }
@@ -53,7 +61,12 @@ public class Brush : MonoBehaviour
     }
     void Update()
     {
-        if (minigameManager.bombController.currentMinigame != MinigameType.Button || minigameManager.completed || minigameManager.lost) return;
+        if (minigameManager.bombController.currentMinigame != MinigameType.Button || minigameManager.completed || minigameManager.lost)
+        {
+            if (polishing == true) polishingSound?.Stop();
+            polishing = false;
+            return;
+        }
         transform.localPosition += new Vector3(moveDir.x, 0, moveDir.y) * MoveSensitivity * Time.deltaTime;
 
 

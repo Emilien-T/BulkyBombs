@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class BombSpawner : Controller<BombSpawner>
@@ -21,5 +22,11 @@ public class BombSpawner : Controller<BombSpawner>
         GameObject bomb = Instantiate(bombPrefab, transform.position, bombPrefab.transform.rotation);
         currentBomb = bomb.GetComponent<BombController>();
         currentBomb.bombTimer = 15f;
+        StartCoroutine(bombComingInSound(0));
+    }
+    private IEnumerator bombComingInSound(float delay) 
+    {
+        yield return new WaitForSeconds(delay);
+        AudioLibrary.Instance.BombComingIn();
     }
 }
