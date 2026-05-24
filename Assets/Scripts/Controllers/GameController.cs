@@ -5,7 +5,6 @@ public class GameController : Controller<GameController>
     public int score;
     protected override void MyAwake()
     {
-        DontDestroyOnLoad(this);
         LeaderboardService.LoadLeaderboard();
     }
 

@@ -1,3 +1,4 @@
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class SceneController : Controller<SceneController> 
@@ -8,6 +9,7 @@ public class SceneController : Controller<SceneController>
     }
     public void LoadScene(string sceneToLoad) 
     {
+        Debug.Log("Trying to load scene: " + sceneToLoad);
         SceneManager.LoadScene(sceneToLoad);
     }
 }
