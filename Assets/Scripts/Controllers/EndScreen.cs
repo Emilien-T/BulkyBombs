@@ -8,6 +8,7 @@ public class EndScreen : MonoBehaviour
     [SerializeField] private Sprite launchNukesSprite;
     [SerializeField] private Sprite badNukesSprite;
     [SerializeField] private GameObject allowContinueUI;
+    public LeaderboardScene ldboardnameinput;
     private bool allowContinuing = false;
 
     private static LossReason reason;
@@ -40,16 +41,15 @@ public class EndScreen : MonoBehaviour
         }
         allowContinuing = false;
         allowContinueUI.SetActive(false);
-        InputController.Instance.buttonAny += Continue;
         DOVirtual.DelayedCall(3f, () => {
             allowContinuing = true;
             allowContinueUI.SetActive(true);
+            ldboardnameinput?.Setup();
         });
     }
 
     private void OnDisable()
     {
-        InputController.Instance.buttonAny -= Continue;
     }
 
     public static void SetLossReason(LossReason r)

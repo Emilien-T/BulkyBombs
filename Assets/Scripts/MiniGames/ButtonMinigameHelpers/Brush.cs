@@ -25,10 +25,12 @@ public class Brush : MonoBehaviour
 
     public bool polishing = false;
     private SoundBuilder polishingSound;
+    private MeshRenderer meshRenderer;
     void Start()
     {
         InputController.Instance.button1 += OnButtonDown;
         InputController.Instance.directionalControls += DirectionalControls;
+        meshRenderer = GetComponent<MeshRenderer>();
         // Initialize to white so multiply starts at 1
         RenderTexture prev = RenderTexture.active;
         RenderTexture.active = paintTexture;
@@ -64,11 +66,13 @@ public class Brush : MonoBehaviour
         if (minigameManager.bombController.currentMinigame != MinigameType.Button || minigameManager.completed || minigameManager.lost)
         {
             if (polishing == true) polishingSound?.Stop();
+            meshRenderer.enabled = false;
             polishing = false;
             return;
         }
         transform.localPosition += new Vector3(moveDir.x, 0, moveDir.y) * MoveSensitivity * Time.deltaTime;
 
+        meshRenderer.enabled = true;
 
         if (!isBuffing) return;
 

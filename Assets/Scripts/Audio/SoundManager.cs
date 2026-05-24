@@ -106,5 +106,15 @@ namespace AudioSystem
             percentage = Mathf.Clamp(percentage, 0.0000001f, 1);
             mixer.SetFloat("CarVolume", Mathf.Log10(percentage) * 60f);
         }
+        public void StopAllSounds()
+        {
+            for (int i = activeEmitters.Count - 1; i >= 0; i--)
+            {
+                if (activeEmitters[i] != null)
+                {
+                    activeEmitters[i].Stop();
+                }
+            }
+        }
     }
 }
