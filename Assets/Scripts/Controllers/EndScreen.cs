@@ -1,3 +1,4 @@
+using AudioSystem;
 using DG.Tweening;
 using DG.Tweening.Core.Easing;
 using Enums;
@@ -33,6 +34,8 @@ public class EndScreen : MonoBehaviour
             default:
                 break;
         }
+        SoundManager.Instance.StopAllSounds();
+        AudioLibrary.Instance.NuclearExplosion();
         DOVirtual.DelayedCall(3f, () => {
             ldboardnameinput?.Setup();
         });
