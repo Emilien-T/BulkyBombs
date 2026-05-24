@@ -34,7 +34,6 @@ public class EndScreen : MonoBehaviour
             default:
                 break;
         }
-        SoundManager.Instance.StopAllSounds();
         AudioLibrary.Instance.NuclearExplosion();
         DOVirtual.DelayedCall(3f, () => {
             ldboardnameinput?.Setup();
