@@ -2,6 +2,7 @@ using DG.Tweening;
 using DG.Tweening.Core.Easing;
 using Enums;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EndScreen : MonoBehaviour
 {
@@ -29,12 +30,14 @@ public class EndScreen : MonoBehaviour
 
     private void OnEnable()
     {
+        Image image = GetComponent<Image>();
         switch (reason)
         {
             case LossReason.LaunchNukes:
-
+                image.sprite = launchNukesSprite;
                 break;
             case LossReason.BadNukes:
+                image.sprite = badNukesSprite;
                 break;
             default:
                 break;
