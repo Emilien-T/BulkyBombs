@@ -52,6 +52,17 @@ public class BoltMinigame : Minigame
                 tempCompleted &= boltList[i].IsBolted();
             }
             completed = tempCompleted;
+            // Will auto next minigame if all bolts are bolted, but at the same time allow failure for spamming the bolt button
+            if (completed)
+            {
+                DOVirtual.DelayedCall(0.2f, () =>
+                {
+                    if(bombController.currentMinigame == MinigameType.Bolt)
+                    {
+                        bombController.NextMiniGame();
+                    }
+                });
+            }
         }
         else if (move.x < -0.8f)
         {

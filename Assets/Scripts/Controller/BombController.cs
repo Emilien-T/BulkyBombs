@@ -167,9 +167,8 @@ public class BombController : MonoBehaviour
             }
             else
             {
-                // For now, but this is the lose state. TODO: Add lose screen later.
-                BombSpawner.Instance.SpawnBomb();
-                Destroy(gameObject);
+                EndScreen.SetLossReason(LossReason.BadNukes);
+                SceneController.Instance.LoadScene("EndScreen");
             }
         });
     }
@@ -182,6 +181,12 @@ public class BombController : MonoBehaviour
     public bool IsActiveBomb()
     {
         return activeBomb;
+    }
+
+    public void SendNukes()
+    {
+        EndScreen.SetLossReason(LossReason.LaunchNukes);
+        SceneController.Instance.LoadScene("EndScreen");
     }
 
     public void Rage()
