@@ -2113,7 +2113,11 @@ PrefabInstance:
     - target: {fileID: 4355915600536943464, guid: 618c9f455b75eb44e800bb2faa0498df, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 5f420a0ceb4f445b29d4ae8e66d90355, type: 2}
+      objectReference: {fileID: 2100000, guid: d306d4ce660754d43ace5f5c6850aaeb, type: 2}
+    - target: {fileID: 5618467031173296632, guid: 618c9f455b75eb44e800bb2faa0498df, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 8fe49ae5042d08a409ad711d1a34749e, type: 2}
     - target: {fileID: 6195834391392408743, guid: 618c9f455b75eb44e800bb2faa0498df, type: 3}
       propertyPath: m_Name
       value: ButtonMinigame
