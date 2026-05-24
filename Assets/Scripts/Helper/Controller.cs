@@ -17,7 +17,7 @@ public class Controller<T> : MonoBehaviour where T : Controller<T>, new()
         if (Instance != null)
         {
             print($"An instance of {typeof(T).Name} already exists. Destroying the new one.");
-            Destroy(Instance);
+            Destroy(gameObject);
             return;
         }
 
