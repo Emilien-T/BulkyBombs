@@ -20,7 +20,7 @@ public class Brush : MonoBehaviour
     private bool isBuffing;
     private Vector2 moveDir;
     private Coroutine buttonPressCo;
-
+    public Animator animator;
     void Start()
     {
         InputController.Instance.button1 += OnButtonDown;
@@ -36,7 +36,16 @@ public class Brush : MonoBehaviour
     }
     private void OnButtonDown(bool isDown)
     {
-        isBuffing = isDown;
+        if (isBuffing == isDown) return;
+        if (!isBuffing) 
+        {
+            animator.SetTrigger("Idle");
+        }
+        else
+        {
+            animator.SetTrigger("Bob");
+        }
+            isBuffing = isDown;
     }
     private void DirectionalControls(Vector2 dir)
     {
@@ -44,8 +53,10 @@ public class Brush : MonoBehaviour
     }
     void Update()
     {
-        if (minigameManager.bombController.currentMinigame != MinigameType.Button || minigameManager.completed) return;
+        if (minigameManager.bombController.currentMinigame != MinigameType.Button || minigameManager.completed || minigameManager.lost) return;
         transform.localPosition += new Vector3(moveDir.x, 0, moveDir.y) * MoveSensitivity * Time.deltaTime;
+
+
         if (!isBuffing) return;
 
         Vector3 direction = transform.position - Camera.main.transform.position;
@@ -71,13 +82,13 @@ public class Brush : MonoBehaviour
     private IEnumerator lowerButtonRoutine() 
     {
         float timer = 0;
-        Vector3 finalPos = button.transform.position + new Vector3(0,-0.1f,0);
-        Vector3 startPos = button.transform.position;
-        while (timer < 0.4f) 
+        Vector3 finalPos = button.transform.localPosition + new Vector3(0,-0.2f,0);
+        Vector3 startPos = button.transform.localPosition;
+        while (timer < 0.1f) 
         {
             timer += Time.deltaTime;
             float t = buttonPressCurve.Evaluate(timer/0.4f);
-            button.transform.position = Vector3.LerpUnclamped(startPos, finalPos, t);
+            button.transform.localPosition = Vector3.LerpUnclamped(startPos, finalPos, t);
             yield return null;
         }
     }

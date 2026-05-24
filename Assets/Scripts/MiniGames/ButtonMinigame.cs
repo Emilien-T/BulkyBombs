@@ -13,6 +13,7 @@ public class ButtonMinigame : Minigame
     public GameObject Circle;
     public GameObject Star;
     public GameObject Umbrella;
+    public bool lost;
 
     private void Start()
     {
@@ -62,10 +63,12 @@ public class ButtonMinigame : Minigame
     }
     public override void OnSelect()
     {
+        brush.animator.SetTrigger("Up");
     }
 
     public override void OnDeselect()
     {
+        brush.animator.SetTrigger("Down");
     }
     public override void ForceDeselect()
     {
@@ -80,7 +83,7 @@ public class ButtonMinigame : Minigame
 
     public override void LoseGame()
     {
-        Debug.Log("Lost");
-        completed = true;
+        brush.animator.SetTrigger("Down");
+        lost = true;
     }
 }
