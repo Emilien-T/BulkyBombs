@@ -196,6 +196,7 @@ public class BombController : MonoBehaviour
 
     public void SendNukes()
     {
+        GameController.Instance.score = BombSpawner.Instance.score;
         EndScreen.SetLossReason(LossReason.LaunchNukes);
         Debug.Log("Sending nukes...");
         SceneController.Instance.LoadScene("EndScreen");
