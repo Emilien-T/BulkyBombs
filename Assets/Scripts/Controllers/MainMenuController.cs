@@ -23,7 +23,7 @@ public class MainMenuController : Controller<MainMenuController>
         {
             if (LeaderboardService.leaderboardAsList.Count > i) 
             {
-                t.text = LeaderboardService.leaderboardAsList[i].name + " : " + LeaderboardService.leaderboardAsList[i].score;
+                t.text = LeaderboardService.leaderboardAsList[i].name.Substring(0,3) + " : " + LeaderboardService.leaderboardAsList[i].score;
             }
             i++;
         }
