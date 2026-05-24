@@ -11,7 +11,7 @@ public class NailsMinigame : Minigame
     public float timerCorrectMaxPercentage;
     Coroutine timerCoroutine;
     public List<Nail> nails = new();
-    private int currentNailIndex = 0;
+    public int currentNailIndex = 0;
 
     public Coroutine nailingCoroutine;
     public float successNailTime;
@@ -133,6 +133,7 @@ public class NailsMinigame : Minigame
     }
     public override void LoseGame()
     {
-        Debug.Log("lost nail game");
+        ForceDeselect();
+        bombController.Rage();
     }
 }
