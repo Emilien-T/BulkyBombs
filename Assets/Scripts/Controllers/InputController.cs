@@ -29,7 +29,7 @@ public class InputController : Controller<InputController>
         DontDestroyOnLoad(this);
         pInput = GetComponent<PlayerInput>();
         pInput.actions["Move"].performed += MovePerformed;
-        pInput.actions["Move"].performed += MovePerformedDown;
+        pInput.actions["Move"].started += MovePerformedDown;
         pInput.actions["Move"].canceled += MovePerformed;
         pInput.actions["Button0"].started += (ctx) => ButtonPressed(ctx, 0);
         pInput.actions["Button0"].canceled += (ctx) => ButtonPressed(ctx, 0);

@@ -45,7 +45,7 @@ public class LeaderboardScene : MonoBehaviour
         else
         {
             letters[currentLetterIndex].Deactivate();
-            currentLetterIndex++;
+            currentLetterIndex = Mathf.Clamp(currentLetterIndex + 1, 0, letters.Count-1);
             letters[currentLetterIndex].Activate();
         }
     }
@@ -58,13 +58,13 @@ public class LeaderboardScene : MonoBehaviour
             if (dir.x > 0)
             {
                 letters[currentLetterIndex].Deactivate();
-                currentLetterIndex = Mathf.Clamp(currentLetterIndex + 1, 0, letters.Count);
+                currentLetterIndex = Mathf.Clamp(currentLetterIndex + 1, 0, letters.Count-1);
                 letters[currentLetterIndex].Activate();
             }
             else
             {
                 letters[currentLetterIndex].Deactivate();
-                currentLetterIndex = Mathf.Clamp(currentLetterIndex - 1, 0, letters.Count);
+                currentLetterIndex = Mathf.Clamp(currentLetterIndex - 1, 0, letters.Count-1);
                 letters[currentLetterIndex].Activate();
             }
         }

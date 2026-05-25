@@ -6,7 +6,6 @@ public class BombSpawner : Controller<BombSpawner>
     [SerializeField] private GameObject bombPrefab;
     private BombController currentBomb;
     public int score;
-    private int count;
     public AnimationCurve curve;
 
     private void Start()
@@ -26,10 +25,9 @@ public class BombSpawner : Controller<BombSpawner>
 
     public void SpawnBomb()
     {
-        count++;
         GameObject bomb = Instantiate(bombPrefab, transform.position, bombPrefab.transform.rotation);
         currentBomb = bomb.GetComponent<BombController>();
-        currentBomb.bombTimer = 55f - (30) * curve.Evaluate(Mathf.Clamp(count, 0,5)/5);
+        currentBomb.bombTimer = 55f - (40) * curve.Evaluate(Mathf.Clamp(score, 0,5)/8f);
         StartCoroutine(bombComingInSound(0));
     }
     private IEnumerator bombComingInSound(float delay) 
